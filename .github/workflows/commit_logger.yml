@@ -1,0 +1,26 @@
+name: Commit Logger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send commit message to a Discord webhook
+        uses: tsickert/discord-webhook@v7.0.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          embed-title: New Commit Pushed
+          embed-url: ${{ github.event.head_commit.url }}
+          embed-description: |
+            **Repository:** [${{ github.repository }}](https://github.com/${{ github.repository }})  
+            **Commit message:** ${{ github.event.head_commit.message }}
+          embed-color: 1973790
+          embed-author-name: ${{ github.event.head_commit.author.name }}
+          embed-author-url: https://github.com/${{ github.event.head_commit.author.username }}
+          embed-thumbnail-url: ${{ github.event.sender.avatar_url }}
+          embed-timestamp: ${{ github.event.head_commit.timestamp }}
+          embed-footer-text: Automated by GitHub Actions
