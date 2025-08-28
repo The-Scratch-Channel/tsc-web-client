@@ -23,5 +23,16 @@
         "reviewlink": "Leave a review",
         "forumlink": "Forum Topic",
         "githublink": "GitHub"
+    },
+    "main": {
+        "welcome": "Welcome to The Scratch Channel",
+        "cat-news": "Scratch News",
+        "cat-announcements": "TSC Announcements",
+        "cat-update": "TSC Update Log",
+        "back-cat": "Back to Categories",
+        "readmore": "Read More",
+        "by": "By",
+        "date": "Date",
+        "category": "Category"
     }
 }

@@ -23,5 +23,16 @@
         "reviewlink": "Recenzu nin",
         "forumlink": "Retforumo",
         "githublink": "GitHub"
+    },
+    "main": {
+        "welcome": "Bonvenon al The Scratch Channel",
+        "cat-news": "Scratch Novaĵo",
+        "cat-announcements": "TSC Anoncadoj",
+        "cat-update": "TSC Ĝisdatiga Protokolo",
+        "back-cat": "Reen al Kategorioj",
+        "readmore": "Legu Pli",
+        "by": "De",
+        "date": "Dato",
+        "category": "Kategorio"
     }
 }
