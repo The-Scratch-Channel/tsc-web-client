@@ -31,5 +31,18 @@
         "by": "By",
         "date": "Date",
         "category": "Category"
+    },
+    "write": {
+        "heading": "Create Article",
+        "title": "Title",
+        "author": "Author",
+        "date": "Date",
+        "category": "Category",
+        "content": "Content",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "unauthorised": "Not authorized to create articles",
+        "title-err": "Title is required",
+        "title-placeholder": "Enter your article title..."
     }
 }

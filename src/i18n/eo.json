@@ -34,5 +34,18 @@
         "by": "De",
         "date": "Dato",
         "category": "Kategorio"
+    },
+    "write": {
+        "heading": "Krei Artikolon",
+        "title": "Titolo",
+        "author": "Aŭtoro",
+        "date": "Dato",
+        "category": "Kategorio",
+        "content": "Enhavo",
+        "submit": "Sendu",
+        "cancel": "Forgesu",
+        "unauthorised": "Ne rajtigita krei artikolojn",
+        "title-err": "Titolo estas bezonata",
+        "title-placeholder": "Enigu la titolon de via artikolo..."
     }
 }
