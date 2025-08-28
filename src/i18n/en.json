@@ -25,10 +25,7 @@
         "githublink": "GitHub"
     },
     "main": {
-        "welcome": "Welcome to The Scratch Channel",
-        "cat-news": "Scratch News",
-        "cat-announcements": "TSC Announcements",
-        "cat-update": "TSC Update Log",
+        "welcome": "Welcome to The Scratch Channel!",
         "back-cat": "Back to Categories",
         "readmore": "Read More",
         "by": "By",

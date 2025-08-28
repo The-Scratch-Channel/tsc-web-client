@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import { db, auth } from "../firebaseConfig";
 import { doc, getDoc, updateDoc, increment, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import { useTranslation } from "react-i18next";
 
 export default function ArticlePage() {
+  const [ t, i18n ] = useTranslation();
   const { filename, category } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -86,9 +88,9 @@ export default function ArticlePage() {
       <div className="article-header">
         <h1>{article.title}</h1>
         <div className="meta">
-          <span className="author">By: {article.author}</span>
-          <span className="date">Date: {article.date}</span>
-          <span className="category">Category: {article.category}</span>
+          <span className="author">{t("main.by")}: {article.author}</span>
+          <span className="date">{t("main.date")}: {article.date}</span>
+          <span className="category">{t("main.category")}: {article.category}</span>
         </div>
       </div>
 
