@@ -3,8 +3,10 @@ import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import { useTranslation } from "react-i18next";
 
 export default function SignUpForm() {
+    const [ t, i18n ] = useTranslation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
@@ -31,29 +33,29 @@ export default function SignUpForm() {
     };
     return (
         <form onSubmit={handleSignUp}>
-            <h2>Sign Up with Username</h2>
+            <h2>{t("signup.heading")}</h2>
             <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
+                placeholder={t("signup.email-placeholder")}
                 required
             />
             <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                placeholder={t("signup.password-placeholder")}
                 required
             />
             <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
+                placeholder={t("signup.username-placeholder")}
                 required
             />
-            <button type="submit">Register</button>
+            <button type="submit">{t("signup.register")}</button>
         </form>
     )
 }

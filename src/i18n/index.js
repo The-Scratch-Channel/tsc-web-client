@@ -6,8 +6,8 @@ import eo from "./eo.json"
 
 i18n.use(initReactI18next).use(LanguageDetector).init({
     resources: {
-        en: { translation: en },
-        eo: { translation: eo }
+        en: { translation: en }, // English
+        eo: { translation: eo } // Esperanto
     },
     fallbackLng: "en",    // fallback if translation is missing
     interpolation: {

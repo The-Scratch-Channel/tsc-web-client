@@ -44,5 +44,23 @@
         "unauthorised": "Not authorized to create articles",
         "title-err": "Title is required",
         "title-placeholder": "Enter your article title..."
+    },
+    "signup": {
+        "heading": "Sign Up with Username",
+        "email-placeholder": "Email",
+        "password-placeholder": "Password",
+        "username-placeholder": "Username",
+        "register": "Register"
+    },
+    "login": {
+        "emailpass-error": "Please enter both email and password.",
+        "signin": "Sign In"
+    },
+    "account": {
+        "welcome": "Welcome",
+        "logout": "Log out",
+        "login": "Log in",
+        "signup": "Sign up",
+        "liketodo": "What would you like to do?"
     }
 }

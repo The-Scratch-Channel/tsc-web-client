@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useTranslation } from "react-i18next";
 
 export default function Account() {
+  const [ t, i18n ] = useTranslation();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -30,15 +32,15 @@ export default function Account() {
     <div style={{ padding: "20px", textAlign: "center" }}>
       {user ? (
         <>
-          <p>Welcome, {user.email}!</p>
-          <button onClick={handleLogout}>Log out</button>
+          <p>{t("account.welcome")}, {user.email}!</p>
+          <button onClick={handleLogout}>{t("account.logout")}</button>
         </>
       ) : (
         <>
-          <p>What would you like to do?</p>
+          <p>{t("account.liketodo")}</p>
           <div style={{ marginTop: "10px" }}>
-            <Link to="/login" style={{ marginRight: "15px" }}>Log in</Link>
-            <Link to="/signup">Sign up</Link>
+            <Link to="/login" style={{ marginRight: "15px" }}>{t("account.login")}</Link>
+            <Link to="/signup">{t("account.signup")}</Link>
           </div>
         </>
       )}
