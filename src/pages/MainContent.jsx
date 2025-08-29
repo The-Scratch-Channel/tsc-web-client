@@ -35,7 +35,6 @@ export default function MainContent() {
           category: data.category,
           preview: data.preview || "",
           thumbnail: data.thumbnail || "",
-          content: data.content || "",
           reactions: {
             thumbsUp: data.thumbsUp || 0,
             thumbsDown: data.thumbsDown || 0,
@@ -124,7 +123,7 @@ export default function MainContent() {
                 <span className="date">{t("main.date")}: {article.date}</span>
               </div>
             </div>
-            <div className="card-content"><center>{article.content.replace("<p>", "").replace("</p>", "")}</center></div>
+            <div className="card-content"><p>{article.preview}</p></div>
             <div className="reactions">
               <button
                 className={`reaction-btn ${animate[article.id]?.thumbsUp ? "animate" : ""}`}
@@ -160,7 +159,7 @@ export default function MainContent() {
           margin-top: 10px;
         }
         .reaction-btn {
-          font-size: 15px;
+          font-size: 20px;
           background: none;
           border: none;
           cursor: pointer;

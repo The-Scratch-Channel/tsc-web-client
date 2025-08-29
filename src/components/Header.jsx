@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import TSC from "../assets/tsc.png";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+    const { t, i18n } = useTranslation();
     const [darkMode, setDarkMode] = useState(() => {
         return localStorage.getItem("theme") === "dark";
     });
@@ -22,12 +24,12 @@ export default function Header() {
             <div className="nav-content">
                 <div className="nav-left">
                     <Link to="/"><img src={TSC} alt="TSC Logo" /></Link>
-                    <Link to="/">Home</Link>
-                    <Link to="https://stats.uptimerobot.com/abiwl4EvLm">Status</Link>
-                    <Link to="/about">About Us</Link>
+                    <Link to="/">{t("header.home")}</Link>
+                    <Link to="/lang">{t("header.language")}</Link>
+                    <Link to="/about">{t("header.about")}</Link>
                 </div>
                 <div className="nav-right">
-                    <Link to="/articles/create">Write an Article</Link>
+                    <Link to="/articles/create">{t("header.write")}</Link>
                     <button
                         onClick={() => setDarkMode(prev => !prev)}
                         className="dark-mode-btn"
@@ -36,7 +38,7 @@ export default function Header() {
                         <i className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"} />
                     </button>
                     <Link to="/account">
-                        Account
+                        {t("header.account")}
                     </Link>
                 </div>
             </div>

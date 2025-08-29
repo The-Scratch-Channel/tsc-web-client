@@ -1,9 +1,9 @@
-permissions:
-  contents: read
 name: Commit Logger
 
 on:
-  push
+  push:
+    branches:
+      - main
 
 jobs:
   notify:
