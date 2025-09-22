@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple RSS Feed Reader</title>
+</head>
+<body style="font-family: sans-serif; background-color: #f0f0f0; margin: 0; padding: 20px;">
+
+    <div style="max-width: 800px; margin: auto;">
+        <h1 style="text-align: center; color: #333;">Latest News Feed</h1>
+
+        <!-- Loading message -->
+        <div id="loading" style="text-align: center; color: #666; padding: 20px;">
+            <p>Fetching feed...</p>
+        </div>
+
+        <!-- The container where the feed items will be displayed -->
+        <div id="rss-container">
+            <!-- Feed items will be injected here by JavaScript -->
+        </div>
+
+        <!-- Error message display -->
+        <div id="error-message" style="display: none; text-align: center; background-color: #ffe6e6; color: #990000; padding: 15px; border: 1px solid #ffcccc; border-radius: 5px; margin-top: 20px;">
+            <p style="font-weight: bold;">Error fetching feed.</p>
+            <p style="font-size: 14px;">Please check the URL or try again later.</p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // The RSS feed URL you want to display
+            const feedUrl = 'https://thescratchchannel.vercel.app';
+            // A public CORS proxy to bypass cross-origin restrictions
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+            const rssContainer = document.getElementById('rss-container');
+            const loadingIndicator = document.getElementById('loading');
+            const errorMessage = document.getElementById('error-message');
+            
+            async function fetchAndParseRSS(url) {
+                try {
+                    // Fetch the feed using the CORS proxy
+                    const response = await fetch(proxyUrl + encodeURIComponent(url));
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const text = await response.text();
+                    
+                    // Parse the XML text
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(text, 'text/xml');
+                    
+                    // Check for parsing errors
+                    if (xmlDoc.getElementsByTagName('parsererror').length > 0) {
+                        throw new Error('Failed to parse XML from the feed.');
+                    }
+                    
+                    return xmlDoc;
+                    
+                } catch (e) {
+                    console.error('Error fetching or parsing RSS feed:', e);
+                    // Hide loading, show error message
+                    loadingIndicator.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                    return null;
+                }
+            }
+            
+            async function displayRSSFeed() {
+                const xmlDoc = await fetchAndParseRSS(feedUrl);
+                
+                if (!xmlDoc) {
+                    return; // Stop if there was an error
+                }
+                
+                // Hide the loading spinner
+                loadingIndicator.style.display = 'none';
+                
+                // Get all 'item' elements from the RSS feed
+                const items = xmlDoc.getElementsByTagName('item');
+                
+                // Loop through each item and create HTML to display it
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    
+                    // Extract the necessary information
+                    const title = item.getElementsByTagName('title')[0]?.textContent || 'No title';
+                    const link = item.getElementsByTagName('link')[0]?.textContent || '#';
+                    const description = item.getElementsByTagName('description')[0]?.textContent || 'No description available.';
+                    const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || '';
+                    
+                    // Create a new div for the feed item
+                    const itemDiv = document.createElement('div');
+                    itemDiv.style.backgroundColor = '#fff';
+                    itemDiv.style.padding = '15px';
+                    itemDiv.style.borderRadius = '8px';
+                    itemDiv.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+                    itemDiv.style.marginBottom = '15px';
+                    
+                    // Create the inner HTML for the item
+                    itemDiv.innerHTML = `
+                        <a href="${link}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #007bff; display: block;">
+                            <h2 style="font-size: 1.2rem; margin: 0 0 10px 0;">${title}</h2>
+                            <p style="color: #555; margin: 0 0 10px 0;">${description}</p>
+                            ${pubDate ? `<p style="font-size: 0.8rem; color: #888; margin: 0;">Published: ${new Date(pubDate).toLocaleDateString()}</p>` : ''}
+                        </a>
+                    `;
+                    
+                    // Append the new item to the container
+                    rssContainer.appendChild(itemDiv);
+                }
+            }
+            
+            // Call the function to display the feed when the page loads
+            displayRSSFeed();
+        });
+    </script>
+
+</body>
+</html>
