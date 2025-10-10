@@ -19,9 +19,7 @@ export default function Footer() {
         <div className="footer-group">
           <h4>{t("footer.headinglinks")}</h4>
           <Link to="/#articles">{t("footer.articleslink")}</Link><br />
-          <a href="https://www.google.com/search?sca_esv=a07cb0739b81081f&q=The%20Scratch%20Channel&stick=H4sIAAAAAAAAAONgU1I1qDBKTjIwMEtKMzQxM7FINje3MqiwSEo0STZOSTROTTEytEy0XMQqHJKRqhCcXJRYkpyh4JyRmJeXmgMAA7YRJD8AAAA&mat=CYAsXbaVju9Q&ved=2ahUKEwjene-VhJmPAxWqWkEAHRYWDPIQrMcEegQIFBAC">{t("footer.googlebusinesslink")}</a><br />
           <a href="https://github.com/The-Scratch-Channel/the-scratch-channel.github.io/issues/new/choose">{t("footer.issuelink")}</a><br />
-          <a href="https://g.page/r/CakZ0j7aw6SLEBM/review">{t("footer.reviewlink")}</a>
         </div>
         <div className="footer-group">
           <h4>{t("footer.headingcommunity")}</h4>
