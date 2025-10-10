@@ -164,5 +164,4 @@ The project is static and uses React+Vite, with Firebase as our database and aut
 
 ## Support
 
-If you need support and have a GitHub account, you can report issues here. Security Vulnerabilities MUST be reported in the security tab, or call or text +1 (313) 513-7748.
-<!-- Why would you give out your phone number? If anything, just do email address, or better, your scratch profile>
+If you need support and have a GitHub account, you can report issues here. Security Vulnerabilities MUST be reported in the security tab.
