@@ -27,6 +27,7 @@ import "./styles/article-modal.css";
 import "./styles/categories.css";
 import "./styles/editor.css";
 import "./styles/lang.css";
+import "./styles/login.css";
 
 function App() {
   const [user, setUser] = useState(null);

@@ -3,6 +3,7 @@ import { auth } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import "../styles/login.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
