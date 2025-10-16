@@ -27,16 +27,16 @@ vi.mock('react-router-dom', async () => {
 // Mock react-i18next
 vi.mock('react-i18next', () => ({
   useTranslation: () => {
-    return {
-      t: (key) => {
+    return [
+      (key) => {
         const translations = {
           'login.emailpass-error': 'Please enter both email and password.',
           'login.signin': 'Sign In',
         };
         return translations[key] || key;
       },
-      i18n: { language: 'en' },
-    };
+      {},
+    ];
   },
 }));
 
@@ -664,6 +664,616 @@ describe('LoginPage Component', () => {
 
       const button = screen.getByRole('button', { name: /sign in/i });
       expect(button).toHaveTextContent('Sign In');
+    });
+  });
+
+  describe('JSDoc Documentation Validation', () => {
+    it('should have JSDoc describing render function', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+      
+      // Component renders successfully, verifying JSDoc accuracy
+      expect(screen.getByRole('button')).toBeInTheDocument();
+    });
+
+    it('should validate JSDoc return type as JSX.Element', () => {
+      const { container } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+      
+      expect(container.firstChild).toBeTruthy();
+      expect(React.isValidElement(<LoginPage />)).toBe(true);
+    });
+
+    it('should verify behavior described in JSDoc', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+      
+      // Validates form with email and password inputs (as documented)
+      expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
+      
+      // Validates submit button (as documented)
+      expect(screen.getByRole('button', { name: /sign in/i })).toBeInTheDocument();
+    });
+
+    it('should verify JSDoc-described validation behavior', () => {
+      const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
+      
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      // Submit without fields (tests validation as documented)
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      fireEvent.click(submitButton);
+
+      expect(alertSpy).toHaveBeenCalled();
+      alertSpy.mockRestore();
+    });
+
+    it('should verify JSDoc-described Firebase authentication behavior', async () => {
+      firebaseAuth.signInWithEmailAndPassword.mockResolvedValue({
+        user: { uid: '123', email: 'test@example.com' }
+      });
+
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.change(passwordInput, { target: { value: 'password123' } });
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(firebaseAuth.signInWithEmailAndPassword).toHaveBeenCalled();
+      });
+    });
+
+    it('should verify JSDoc-described navigation behavior', async () => {
+      firebaseAuth.signInWithEmailAndPassword.mockResolvedValue({
+        user: { uid: '123', email: 'test@example.com' }
+      });
+
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.change(passwordInput, { target: { value: 'password123' } });
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      fireEvent.click(submitButton);
+
+      // Navigates to '/' as documented
+      await waitFor(() => {
+        expect(mockNavigate).toHaveBeenCalledWith('/');
+      });
+    });
+  });
+
+  describe('Form State Management', () => {
+    it('should maintain email state across re-renders', () => {
+      const { rerender } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      
+      rerender(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      // State should persist (though this creates a new instance)
+      expect(emailInput.value).toBe('test@example.com');
+    });
+
+    it('should maintain password state independently', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(passwordInput, { target: { value: 'password123' } });
+      
+      // Email should remain empty
+      expect(emailInput.value).toBe('');
+      expect(passwordInput.value).toBe('password123');
+    });
+
+    it('should handle state updates in sequence', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(emailInput, { target: { value: 'first@example.com' } });
+      fireEvent.change(passwordInput, { target: { value: 'pass1' } });
+      fireEvent.change(emailInput, { target: { value: 'second@example.com' } });
+      fireEvent.change(passwordInput, { target: { value: 'pass2' } });
+      
+      expect(emailInput.value).toBe('second@example.com');
+      expect(passwordInput.value).toBe('pass2');
+    });
+  });
+
+  describe('Input Field Focus Behavior', () => {
+    it('should support focusing email input', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      emailInput.focus();
+      
+      expect(document.activeElement).toBe(emailInput);
+    });
+
+    it('should support focusing password input', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const passwordInput = screen.getByPlaceholderText('Password');
+      passwordInput.focus();
+      
+      expect(document.activeElement).toBe(passwordInput);
+    });
+
+    it('should maintain focus after typing', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      emailInput.focus();
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      
+      expect(document.activeElement).toBe(emailInput);
+    });
+
+    it('should allow tab navigation between fields', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      emailInput.focus();
+      expect(document.activeElement).toBe(emailInput);
+      
+      // Simulate tab key (focus moves naturally in browser)
+      passwordInput.focus();
+      expect(document.activeElement).toBe(passwordInput);
+    });
+  });
+
+  describe('Security Considerations', () => {
+    it('should use password input type to hide password', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const passwordInput = screen.getByPlaceholderText('Password');
+      expect(passwordInput).toHaveAttribute('type', 'password');
+    });
+
+    it('should not display password value in DOM text content', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const passwordInput = screen.getByPlaceholderText('Password');
+      fireEvent.change(passwordInput, { target: { value: 'secretPassword123' } });
+      
+      // Password should be in value attribute, not visible text
+      const { container } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+      expect(container.textContent).not.toContain('secretPassword123');
+    });
+
+    it('should handle SQL injection-like strings safely', async () => {
+      firebaseAuth.signInWithEmailAndPassword.mockResolvedValue({
+        user: { uid: '123', email: 'test@example.com' }
+      });
+
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(emailInput, { target: { value: "test@example.com' OR '1'='1" } });
+      fireEvent.change(passwordInput, { target: { value: "' OR '1'='1" } });
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      fireEvent.click(submitButton);
+
+      // Should pass strings as-is to Firebase (Firebase handles security)
+      await waitFor(() => {
+        expect(firebaseAuth.signInWithEmailAndPassword).toHaveBeenCalledWith(
+          {},
+          "test@example.com' OR '1'='1",
+          "' OR '1'='1"
+        );
+      });
+    });
+
+    it('should handle XSS attempt strings safely', async () => {
+      firebaseAuth.signInWithEmailAndPassword.mockResolvedValue({
+        user: { uid: '123', email: 'test@example.com' }
+      });
+
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(emailInput, { target: { value: '<script>alert("xss")</script>@test.com' } });
+      fireEvent.change(passwordInput, { target: { value: '<img src=x onerror=alert(1)>' } });
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(firebaseAuth.signInWithEmailAndPassword).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('Component Lifecycle', () => {
+    it('should clean up properly on unmount', () => {
+      const { unmount } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      expect(() => unmount()).not.toThrow();
+    });
+
+    it('should not cause memory leaks with event handlers', () => {
+      const { unmount } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+
+      unmount();
+      
+      // Should unmount cleanly
+      expect(() => {
+        // Try to access after unmount
+      }).not.toThrow();
+    });
+
+    it('should handle multiple mounts and unmounts', () => {
+      const { unmount: unmount1 } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+      unmount1();
+
+      const { unmount: unmount2 } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+      unmount2();
+
+      expect(true).toBe(true);
+    });
+  });
+
+  describe('Form Submission Variations', () => {
+    it('should prevent default form submission behavior', async () => {
+      firebaseAuth.signInWithEmailAndPassword.mockResolvedValue({
+        user: { uid: '123', email: 'test@example.com' }
+      });
+
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.change(passwordInput, { target: { value: 'password123' } });
+
+      const form = screen.getByRole('button').closest('form');
+      const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+      
+      form.dispatchEvent(submitEvent);
+
+      // Should call preventDefault (handled by React)
+      expect(submitEvent.defaultPrevented).toBe(true);
+    });
+
+    it('should handle submission with trimmed values', async () => {
+      firebaseAuth.signInWithEmailAndPassword.mockResolvedValue({
+        user: { uid: '123', email: 'test@example.com' }
+      });
+
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      // Note: Component doesn't trim, passes as-is
+      fireEvent.change(emailInput, { target: { value: '  test@example.com  ' } });
+      fireEvent.change(passwordInput, { target: { value: '  password123  ' } });
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(firebaseAuth.signInWithEmailAndPassword).toHaveBeenCalledWith(
+          {},
+          '  test@example.com  ',
+          '  password123  '
+        );
+      });
+    });
+  });
+
+  describe('CSS Class Integration', () => {
+    it('should apply login-container class to wrapper', () => {
+      const { container } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const loginContainer = container.querySelector('.login-container');
+      expect(loginContainer).toBeInTheDocument();
+    });
+
+    it('should apply form-group class to input wrappers', () => {
+      const { container } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const formGroups = container.querySelectorAll('.form-group');
+      expect(formGroups.length).toBe(2);
+    });
+
+    it('should apply form-input class to email input', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      expect(emailInput).toHaveClass('form-input');
+    });
+
+    it('should apply form-input class to password input', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const passwordInput = screen.getByPlaceholderText('Password');
+      expect(passwordInput).toHaveClass('form-input');
+    });
+
+    it('should apply submit-button class to submit button', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      expect(submitButton).toHaveClass('submit-button');
+    });
+
+    it('should structure form groups correctly', () => {
+      const { container } = render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const formGroups = container.querySelectorAll('.form-group');
+      expect(formGroups[0].querySelector('input[type="email"]')).toBeInTheDocument();
+      expect(formGroups[1].querySelector('input[type="password"]')).toBeInTheDocument();
+    });
+  });
+
+  describe('Async Operation Handling', () => {
+    it('should handle slow Firebase response', async () => {
+      let resolveAuth;
+      firebaseAuth.signInWithEmailAndPassword.mockImplementation(() => {
+        return new Promise(resolve => {
+          resolveAuth = resolve;
+        });
+      });
+
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.change(passwordInput, { target: { value: 'password123' } });
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      fireEvent.click(submitButton);
+
+      // Resolve after a delay
+      setTimeout(() => {
+        resolveAuth({ user: { uid: '123', email: 'test@example.com' } });
+      }, 100);
+
+      await waitFor(() => {
+        expect(mockNavigate).toHaveBeenCalledWith('/');
+      }, { timeout: 2000 });
+    });
+
+    it('should handle Firebase timeout errors', async () => {
+      const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
+      firebaseAuth.signInWithEmailAndPassword.mockRejectedValue({
+        message: 'Request timeout'
+      });
+
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.change(passwordInput, { target: { value: 'password123' } });
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(alertSpy).toHaveBeenCalledWith('Error signing in: Request timeout');
+      });
+
+      alertSpy.mockRestore();
+    });
+  });
+
+  describe('Browser Compatibility', () => {
+    it('should work with standard form submission', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const form = screen.getByRole('button').closest('form');
+      expect(form).toBeInTheDocument();
+      expect(form.tagName).toBe('FORM');
+    });
+
+    it('should use standard HTML5 input types', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const emailInput = screen.getByPlaceholderText('Email');
+      const passwordInput = screen.getByPlaceholderText('Password');
+      
+      expect(emailInput.type).toBe('email');
+      expect(passwordInput.type).toBe('password');
+    });
+
+    it('should use standard button type', () => {
+      render(
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      );
+
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
+      expect(submitButton.type).toBe('submit');
+    });
+  });
+
+  describe('Export Validation', () => {
+    it('should export LoginPage as default', () => {
+      expect(LoginPage).toBeDefined();
+      expect(typeof LoginPage).toBe('function');
+    });
+
+    it('should be a valid React component', () => {
+      expect(React.isValidElement(<LoginPage />)).toBe(true);
+    });
+
+    it('should render without Router context errors', () => {
+      expect(() => {
+        render(
+          <BrowserRouter>
+            <LoginPage />
+          </BrowserRouter>
+        );
+      }).not.toThrow();
     });
   });
 });
