@@ -27,7 +27,15 @@ import "./styles/article-modal.css";
 import "./styles/categories.css";
 import "./styles/editor.css";
 import "./styles/lang.css";
+import "./styles/login.css";
 
+/**
+ * Root React component that initializes authentication/profile state and renders the app routes.
+ *
+ * Initializes Firebase authentication listener, fetches the signed-in user's Firestore profile, displays a centered spinner while initialization is in progress, and renders the header, footer, and route hierarchy. Routes for creating articles, making admins, and viewing all users are protected and rendered only when a user is signed in and their profile has `writer` set to a truthy value.
+ *
+ * @returns {JSX.Element} The application UI including header, routes (with writer-protected routes), and footer.
+ */
 function App() {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
