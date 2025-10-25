@@ -78,3 +78,44 @@ Here is a directory structure:
 ├── generate-sitemap.js // a node script thats run by a github action to update the sitemap every 4 hours automatically
 └── index.html // only put stuff that should be edited in the head in here. in react you do not generally edit the body of index.html.
 ```
+
+We have no plans to switch our frameworks or to TypeScript so please do not suggest or add that.
+
+## Back-end
+
+We use Firebase as our Backend-as-a-service solution. As with our front end, we have no plans to change it.
+
+@nouxinf is the Database Admin, any direct modifications to the database should be requested to him.
+
+There are two used collections:
+
+- `articles`
+- `users`
+
+Articles stores each article as the name suggests. Here are the fields as an example:
+
+```
+category "Scratch News"
+content "It's official. You can now set custom thumbnails without using chrome extensions. This let's you set the projects screen as the thumbnail."
+createdAt 25 August 2025 at 20:57:54 UTC+1
+date "2025-08-25"
+confetti 1
+heart 2
+thumbsDown 1
+thumbsUp 4
+title "Custom thumbnail update out now
+```
+
+The other one, users, stores some information about every user who has signed up. It looks like so:
+
+```
+banned true
+createdAt 17 October 2025 at 18:23:57 UTC+1
+email "chirapa@celestre.com"
+username "test"
+writer true 
+```
+
+The reason the username is stored here is because Firebase authentication does not actually have a field for usernames, so they have to be stored separately.
+
+There is another one, chats. It is unused as the commenting feature has been removed.
