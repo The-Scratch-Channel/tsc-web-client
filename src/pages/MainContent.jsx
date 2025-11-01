@@ -70,6 +70,7 @@ export default function MainContent() {
             thumbsDown: data.thumbsDown || 0,
             heart: data.heart || 0,
             confetti: data.confetti || 0,
+            sad: data.sad || 0,
           },
         };
 
