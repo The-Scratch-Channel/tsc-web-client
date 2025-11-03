@@ -10,9 +10,9 @@ export default function ArticlePage() {
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const [userReactions, setUserReactions] = useState({ thumbsUp: false, thumbsDown: false, heart: false, confetti: false });
-  const [animate, setAnimate] = useState({ thumbsUp: false, thumbsDown: false, heart: false, confetti: false });
-  const [reactions, setReactions] = useState({ thumbsUp: 0, thumbsDown: 0, heart: 0, confetti: 0 });
+  const [userReactions, setUserReactions] = useState({ thumbsUp: false, thumbsDown: false, heart: false, confetti: false, sad: false});
+  const [animate, setAnimate] = useState({ thumbsUp: false, thumbsDown: false, heart: false, confetti: false, sad: false});
+  const [reactions, setReactions] = useState({ thumbsUp: 0, thumbsDown: 0, heart: 0, confetti: 0, sad: 0 });
 
   // set title to article title
   useEffect(() => {
@@ -48,6 +48,7 @@ export default function ArticlePage() {
           thumbsDown: data.thumbsDown || 0,
           heart: data.heart || 0,
           confetti: data.confetti || 0,
+          sad: data.sad || 0
         });
 
         if (user) {
@@ -144,6 +145,13 @@ export default function ArticlePage() {
           style={{ color: userReactions.confetti ? "#0d6efd" : "grey" }}
         >
           🎉 {reactions.confetti}
+          </button>
+        <button
+          className={`reaction-btn ${animate.sad ? "animate" : ""}`}
+          onClick={() => handleReaction("sad")}
+          style={{ color: userReactions.sad ? "#0d6efd" : "grey" }}
+        >
+          😭 {reactions.sad}
         </button>
       </div>
     </div>

@@ -70,6 +70,7 @@ export default function MainContent() {
             thumbsDown: data.thumbsDown || 0,
             heart: data.heart || 0,
             confetti: data.confetti || 0,
+            sad: data.sad || 0,
           },
         };
 
@@ -203,11 +204,16 @@ export default function MainContent() {
                     onClick={() => handleReaction(article.id, "heart")}
                     style={{ color: userReactions[article.id]?.heart ? "#ff4081" : "grey" }}
                   >❤️ {article.reactions.heart}</button>
-                <button
-                  className={`reaction-btn ${animate[article.id]?.confetti ? "animate" : ""}`}
-                  onClick={() => handleReaction(article.id, "confetti")}
-                  style={{ color: userReactions[article.id]?.confetti ? "#0d6efd" : "grey" }}
-                >🎉 {article.reactions.confetti}</button>
+                  <button
+                    className={`reaction-btn ${animate[article.id]?.confetti ? "animate" : ""}`}
+                    onClick={() => handleReaction(article.id, "confetti")}
+                    style={{ color: userReactions[article.id]?.confetti ? "#0d6efd" : "grey" }}
+                  >🎉 {article.reactions.confetti}</button>
+                  <button
+                    className={`reaction-btn ${animate[article.id]?.sad ? "animate" : ""}`}
+                    onClick={() => handleReaction(article.id, "sad")}
+                    style={{ color: userReactions[article.id]?.sad ? "#0d6efd" : "grey" }}
+                  >😭 {article.reactions.sad}</button> 
                 </div>
                 <div className="read-more" onClick={() => navigate(`${article.category}/article/${article.id}`)}>{t("main.readmore")} →</div>
               </div>
@@ -384,6 +390,11 @@ export default function MainContent() {
                 onClick={() => handleReaction(article.id, "confetti")}
                 style={{ color: userReactions[article.id]?.confetti ? "#0d6efd" : "grey" }}
               >🎉 {article.reactions.confetti}</button>
+              <button
+                className={`reaction-btn ${animate[article.id]?.sad ? "animate" : ""}`}
+                onClick={() => handleReaction(article.id, "sad")}
+                style={{ color: userReactions[article.id]?.sad ? "#0d6efd" : "grey" }}
+              >😭 {article.reactions.sad}</button> 
             </div>
             <div className="read-more" onClick={() => navigate(`${selectedCategory}/article/${article.id}`)}>{t("main.readmore")} →</div>
           </div>
