@@ -8,12 +8,12 @@ export default function Account() {
   const [user, setUser] = useState(null);
   const [ t, i18n ] = useTranslation();
   useEffect(() => {
-    // listen for auth state changes any change causes thiz
+    // listen for auth state changes any change causes this
     const removeCookie = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
 
-    // sign out and remove local data from browserz
+    // sign out and remove local data from browsers
     return () => removeCookie();
   }, []);
 
