@@ -9,12 +9,12 @@ export default function Account() {
   const [ t, i18n ] = useTranslation();
   useEffect(() => {
     // listen for auth state changes any change causes thiz
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const removeCookie = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
 
     // sign out and remove local data from browserz
-    return () => unsubscribe();
+    return () => removeCookie();
   }, []);
 
   const handleLogout = async () => {
