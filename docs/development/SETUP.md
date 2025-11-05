@@ -3,7 +3,7 @@
 Firstly, make sure you have all of the following:
 
 - Node.js
-- A device that can run a terminal (Such as Linux or Windows Comand Prompt)
+- A device that can run a terminal (Such as Linux or Windows Command Prompt)
 - Git
 - A GitHub account
 
