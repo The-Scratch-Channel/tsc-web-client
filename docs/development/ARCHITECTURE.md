@@ -79,7 +79,7 @@ Here is a directory structure:
 └── index.html // only put stuff that should be edited in the head in here. in react you do not generally edit the body of index.html.
 ```
 
-We have no plans to switch our frameworks or to TypeScript so please do not comit any of those kinds of files.
+We have no plans to switch our frameworks or to TypeScript so please do not commit any of those kinds of files.
 
 ## Back-end
 
