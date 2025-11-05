@@ -22,5 +22,3 @@ npm install
 This could take a bit.
 
 Finally, you can now edit the code. Commit your changes then make a PR. The dev team will look into it and decide whether to merge it or not.
-
-Please also read the [Style Guide](STYLE_GUIDE.md) in order to get a gist of how we write our code.
