@@ -1,6 +1,6 @@
-# Contributing to The Scratch Channel
+# Developer Documentation | The Scratch Channel
 
-Thanks for your interest in contributing? There are multiple ways to help.
+Thanks for your interest in contributing! There are multiple ways to help.
 
 ## 🔧 [Development](./development/README.md)
 
