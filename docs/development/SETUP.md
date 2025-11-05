@@ -3,9 +3,9 @@
 Firstly, make sure you have all of the following:
 
 - Node.js
-- A device that can run a terminal
+- A device that can run a terminal (Such as Linux or Windows Comand Prompt)
 - Git
-- A github account
+- A GitHub account
 
 Second, create a fork of the repository then clone your fork.
 
