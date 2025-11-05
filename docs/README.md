@@ -1,4 +1,4 @@
-# Developer Documentation | The Scratch Channel
+# Developer Documentation
 
 Thanks for your interest in contributing! There are multiple ways to help.
 

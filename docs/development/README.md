@@ -1,4 +1,4 @@
-# Start Developing.
+# Start Developing
 
 This is the homepage for people wanting to contribute by writing code. Here are some links:
 
