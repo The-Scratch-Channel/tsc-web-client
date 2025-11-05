@@ -11,7 +11,7 @@ There is no need to deploy this yourself if you do not want to contribute. If yo
 
 ## Contributing
 
-If you want to contribute to the project, head to [docs/README.md] for a guide for all types of contributions
+If you want to contribute to the project, head to [docs/README.md](docs/README.md) for a guide for all types of contributions
 
 ## Support
 
