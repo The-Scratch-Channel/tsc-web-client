@@ -79,7 +79,7 @@ Here is a directory structure:
 └── index.html // only put stuff that should be edited in the head in here. in react you do not generally edit the body of index.html.
 ```
 
-We have no plans to switch our frameworks or to TypeScript so please do not suggest or add that.
+We have no plans to switch our frameworks or to TypeScript so please do not comit any of those kinds of files.
 
 ## Back-end
 
@@ -109,11 +109,12 @@ title "Custom thumbnail update out now
 The other one, users, stores some information about every user who has signed up. It looks like so:
 
 ```
-banned true
-createdAt 17 October 2025 at 18:23:57 UTC+1
-email "chirapa@celestre.com"
-username "test"
-writer true 
+banned false
+createdAt 01 January 2025
+UTC+9
+email "test@12345.gov"
+username "helloWorld"
+writer false
 ```
 
 The reason the username is stored here is because Firebase authentication does not actually have a field for usernames, so they have to be stored separately.
