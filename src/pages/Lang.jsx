@@ -13,6 +13,7 @@ import hb from "../i18n/hb.json";
 
 // flag icons
 import enFlag from "../assets/flags/en.svg";
+import esFlag from "../assets/flags/es.svg";
 import eoFlag from "../assets/flags/eo.svg";
 import bgFlag from "../assets/flags/bg.svg";
 import lolFlag from "../assets/flags/lol.svg";
