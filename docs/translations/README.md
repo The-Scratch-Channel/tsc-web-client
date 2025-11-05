@@ -1,6 +1,6 @@
 # Translating The Scratch Channel
 
-Follow the same steps as in [setup](../development/SETUP.md), then go into `src/i18n` and create a json file with the correct two letter language code for the language you want to add. Copy the content of `en.json` as a template then translate the definitions, not the keys. Go into `index.js` and find this part. Import the json file you created then add it in just like with the ones already there.
+Follow the same steps as in [setup](../development/SETUP.md), then go into `/src/i18n`, and create a `.json` file with the correct two letter language code for the language you want to add. Copy the content of `en.json` as a template then translate the definitions, not the keys. Your file should, for example, be named like this: `jp.json`. Go into `index.js` and find this part. Import the json file you created then add it in just like with the ones already there.
 
 ```jsx
 i18n.use(initReactI18next).use(LanguageDetector).init({
