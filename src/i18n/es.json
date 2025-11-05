@@ -1,67 +1,67 @@
-{ //wip, do not push
+{
     "misc": {
         "chooselang": "Selecciona tu idioma",
-        "langprogress": "Progreso de la traducción"
+        "langprogress": "Progreso de traducción"
     },
     "header": {
-        "home": "Home",
-        "language": "Language",
-        "about": "About Us",
-        "write": "Write",
-        "account": "Account"
+        "home": "Inicio",
+        "language": "Idioma",
+        "about": "Sobre nosotros",
+        "write": "Escribir",
+        "account": "Cuenta"
     },
     "footer": {
-        "disclaimer": "is not affiliated with Scratch, the Scratch Team, or the Scratch Foundation.",
-        "headingabout": "About",
-        "headinglinks": "Resources",
-        "headingcommunity": "Community",
-        "aboutlink": "About and Credits",
-        "licenselink": "License",
-        "statuslink": "Status",
-        "articleslink": "Articles",
+        "disclaimer": "no está afiliado con Scratch, el equipo de Scratch o la Fundación Scratch.",
+        "headingabout": "Acerca de",
+        "headinglinks": "Recursos",
+        "headingcommunity": "Comunidad",
+        "aboutlink": "Acerca y créditos",
+        "licenselink": "Licencia",
+        "statuslink": "Estado",
+        "articleslink": "Artículos",
         "googlebusinesslink": "Google Business",
-        "issuelink": "Report an issue",
-        "reviewlink": "Leave a review",
-        "forumlink": "Forum Topic",
+        "issuelink": "Reportar un problema",
+        "reviewlink": "Deja una reseña",
+        "forumlink": "Tema del foro",
         "githublink": "GitHub"
     },
     "main": {
-        "welcome": "Welcome to The Scratch Channel!",
-        "back-cat": "Back to Categories",
-        "readmore": "Read More",
-        "by": "By",
-        "date": "Date",
-        "category": "Category"
+        "welcome": "¡Bienvenido a The Scratch Channel!",
+        "back-cat": "Volver a categorías",
+        "readmore": "Leer más",
+        "by": "Por",
+        "date": "Fecha",
+        "category": "Categoría"
     },
     "write": {
-        "heading": "Create Article",
-        "title": "Title",
-        "author": "Author",
-        "date": "Date",
-        "category": "Category",
-        "content": "Content",
-        "submit": "Submit",
-        "cancel": "Cancel",
-        "unauthorised": "Not authorized to create articles",
-        "title-err": "Title is required",
-        "title-placeholder": "Enter your article title..."
+        "heading": "Crear artículo",
+        "title": "Título",
+        "author": "Autor",
+        "date": "Fecha",
+        "category": "Categoría",
+        "content": "Contenido",
+        "submit": "Enviar",
+        "cancel": "Cancelar",
+        "unauthorised": "No autorizado para crear artículos",
+        "title-err": "El título es obligatorio",
+        "title-placeholder": "Introduce el título de tu artículo..."
     },
     "signup": {
-        "heading": "Sign Up",
-        "email-placeholder": "Email",
-        "password-placeholder": "Password",
-        "username-placeholder": "Username",
-        "register": "Register"
+        "heading": "Registrarse",
+        "email-placeholder": "Correo electrónico",
+        "password-placeholder": "Contraseña",
+        "username-placeholder": "Nombre de usuario",
+        "register": "Registrar"
     },
     "login": {
-        "emailpass-error": "Please enter both email and password.",
-        "signin": "Sign In"
+        "emailpass-error": "Por favor ingresa correo y contraseña.",
+        "signin": "Iniciar sesión"
     },
     "account": {
-        "welcome": "Welcome",
-        "logout": "Log out",
-        "login": "Log in",
-        "signup": "Sign up",
-        "liketodo": "What would you like to do?"
+        "welcome": "Bienvenido",
+        "logout": "Cerrar sesión",
+        "login": "Iniciar sesión",
+        "signup": "Registrarse",
+        "liketodo": "¿Qué te gustaría hacer?"
     }
 }
