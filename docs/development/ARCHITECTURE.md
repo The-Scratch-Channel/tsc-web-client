@@ -110,7 +110,7 @@ The other one, users, stores some information about every user who has signed up
 
 ```
 banned false
-createdAt 01 January 2025
+createdAt 01 January 2025 at 12:00:00
 UTC+9
 email "test@12345.gov"
 username "helloWorld"
