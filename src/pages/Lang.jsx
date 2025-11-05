@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContaine
 
 // import language JSON files
 import en from "../i18n/en.json";
+import es from "../i18n/es.json";
 import eo from "../i18n/eo.json";
 import bg from "../i18n/bg.json";
 import lol from "../i18n/lol.json";
@@ -56,6 +57,7 @@ export default function LangPage() {
 
   const languages = [
     { lang: "English", key: "en", json: en },
+    { lang: "Español", key: "es", json: es },
     { lang: "Esperanto", key: "eo", json: eo },
     { lang: "Bulgarian", key: "bg", json: bg },
     { lang: "LOLCAT", key: "lol", json: lol },
@@ -78,6 +80,10 @@ export default function LangPage() {
         <div className="lang-btn-div" onClick={() => switchLanguage("en")}>
           <img className="lang-flag" src={enFlag} alt="English" />
           <button>English</button>
+        </div>
+        <div className="lang-btn-div" onClick={() => switchLanguage("es")}>
+          <img className="lang-flag" src={esFlag} alt="Español" />
+          <button>Español</button>
         </div>
         <div className="lang-btn-div" onClick={() => switchLanguage("eo")}>
           <img className="lang-flag" src={eoFlag} alt="Esperanto" />

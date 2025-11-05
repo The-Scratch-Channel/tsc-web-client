@@ -1,0 +1,67 @@
+{ //wip, do not push
+    "misc": {
+        "chooselang": "Selecciona tu idioma",
+        "langprogress": "Progreso de la traducción"
+    },
+    "header": {
+        "home": "Home",
+        "language": "Language",
+        "about": "About Us",
+        "write": "Write",
+        "account": "Account"
+    },
+    "footer": {
+        "disclaimer": "is not affiliated with Scratch, the Scratch Team, or the Scratch Foundation.",
+        "headingabout": "About",
+        "headinglinks": "Resources",
+        "headingcommunity": "Community",
+        "aboutlink": "About and Credits",
+        "licenselink": "License",
+        "statuslink": "Status",
+        "articleslink": "Articles",
+        "googlebusinesslink": "Google Business",
+        "issuelink": "Report an issue",
+        "reviewlink": "Leave a review",
+        "forumlink": "Forum Topic",
+        "githublink": "GitHub"
+    },
+    "main": {
+        "welcome": "Welcome to The Scratch Channel!",
+        "back-cat": "Back to Categories",
+        "readmore": "Read More",
+        "by": "By",
+        "date": "Date",
+        "category": "Category"
+    },
+    "write": {
+        "heading": "Create Article",
+        "title": "Title",
+        "author": "Author",
+        "date": "Date",
+        "category": "Category",
+        "content": "Content",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "unauthorised": "Not authorized to create articles",
+        "title-err": "Title is required",
+        "title-placeholder": "Enter your article title..."
+    },
+    "signup": {
+        "heading": "Sign Up",
+        "email-placeholder": "Email",
+        "password-placeholder": "Password",
+        "username-placeholder": "Username",
+        "register": "Register"
+    },
+    "login": {
+        "emailpass-error": "Please enter both email and password.",
+        "signin": "Sign In"
+    },
+    "account": {
+        "welcome": "Welcome",
+        "logout": "Log out",
+        "login": "Log in",
+        "signup": "Sign up",
+        "liketodo": "What would you like to do?"
+    }
+}
