@@ -22,3 +22,5 @@ npm install
 This could take a bit.
 
 Finally, you can now edit the code. Commit your changes then make a PR. The dev team will look into it and decide whether to merge it or not.
+
+We use husky to make sure that when commiting, your code is linted automatically (the command ran before commiting is `npx eslint --fix .`).
