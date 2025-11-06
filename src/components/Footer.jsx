@@ -25,7 +25,8 @@ export default function Footer() {
         <div className="footer-group">
           <h4>{t("footer.headingcommunity")}</h4>
           <a href="https://scratch.mit.edu/discuss/topic/814999/">{t("footer.forumlink")}</a><br />
-          <a href="https://github.com/The-Scratch-Channel/the-scratch-channel.github.io/">{t("footer.githublink")}</a>
+          <a href="https://github.com/The-Scratch-Channel/the-scratch-channel.github.io/">{t("footer.githublink")}<br /></a>
+          <a href="https://discord.gg/j6zvJw7tRg">{t("footer.discord")}</a>
         </div>
       </div>
       <br />

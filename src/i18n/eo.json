@@ -22,7 +22,8 @@
         "issuelink": "Riporti problemon",
         "reviewlink": "Recenzu nin",
         "forumlink": "Retforumo",
-        "githublink": "GitHub"
+        "githublink": "GitHub",
+        "discord": "Discord"
     },
     "main": {
         "welcome": "Bonvenon al The Scratch Channel",

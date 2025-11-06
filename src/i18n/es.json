@@ -23,7 +23,8 @@
         "issuelink": "Reportar un problema",
         "reviewlink": "Deja una reseña",
         "forumlink": "Tema del foro",
-        "githublink": "GitHub"
+        "githublink": "GitHub",
+        "discord": "Discord"
     },
     "main": {
         "welcome": "¡Bienvenido a The Scratch Channel!",

@@ -23,7 +23,8 @@
         "issuelink": "Report *rasp* an *rasp* issue *rasp*",
         "reviewlink": "Leave *rasp* a *rasp* review *rasp*",
         "forumlink": "Forum *rasp* Topic *rasp*",
-        "githublink": "GitHub *rasp*"
+        "githublink": "GitHub *rasp*",
+        "discord": "Discord *rasp*"
     },
     "main": {
         "welcome": "Welcome *rasp* to *rasp* The *rasp* Scratch *rasp* Channel! *rasp*",

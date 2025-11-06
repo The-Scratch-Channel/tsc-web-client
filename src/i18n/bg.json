@@ -23,7 +23,8 @@
         "issuelink": "Съобщете за проблем",
         "reviewlink": "Преглед",
         "forumlink": "Форум",
-        "githublink": "GitHub"
+        "githublink": "GitHub",
+        "discord": "Discord"
     },
     "main": {
         "welcome": "Добре дошли в The Scratch Channel",
