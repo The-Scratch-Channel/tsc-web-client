@@ -9,24 +9,26 @@ import lol from "./lol.json";
 import rbe from "./rbe.json";
 import hb from "./hb.json";
 
-i18n.use(initReactI18next).use(LanguageDetector).init({
-    resources: {
-        en: { translation: en }, // English
-        es: { translation: es }, // spanish
-        eo: { translation: eo }, // Esperanto
-        bg: { translation: bg }, // Булгарски
-        lol: { translation: lol }, // LOLCAT
-        rbe: { translation: rbe }, // Rock-Bottomese
-        hb: { translation: hb } //[[Hyberlink Blocked]]
-    },
-    fallbackLng: "en",    // fallback if translation is missing
-    interpolation: {
-        escapeValue: false
-    },
-    detection: {
-        order: ["localStorage", "navigator"],
-        caches: ["localStorage"],
-    }
-});
+i18n.use(initReactI18next)
+	.use(LanguageDetector)
+	.init({
+		resources: {
+			en: { translation: en }, // English
+			es: { translation: es }, // spanish
+			eo: { translation: eo }, // Esperanto
+			bg: { translation: bg }, // Булгарски
+			lol: { translation: lol }, // LOLCAT
+			rbe: { translation: rbe }, // Rock-Bottomese
+			hb: { translation: hb }, //[[Hyberlink Blocked]]
+		},
+		fallbackLng: "en", // fallback if translation is missing
+		interpolation: {
+			escapeValue: false,
+		},
+		detection: {
+			order: ["localStorage", "navigator"],
+			caches: ["localStorage"],
+		},
+	});
 
 export default i18n;
