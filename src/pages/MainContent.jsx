@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebaseConfig";
+import sanitizeHtml from "sanitize-html";
 import {
 	collection,
 	getDocs,
@@ -116,7 +117,8 @@ export default function MainContent() {
 		fetchArticles();
 	}, [user, profile?.writer]);
 
-	const stripHtml = (html) => html?.replace(/<[^>]*>/g, "") || "";
+	const stripHtml = (html) =>
+		html ? sanitizeHtml(html, { allowedTags: [] }) : "";
 	const makeSnippet = (html, max = 300) =>
 		stripHtml(html).slice(0, max) +
 		(stripHtml(html).length > max ? "..." : "");
