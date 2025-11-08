@@ -42,7 +42,7 @@ export default function Footer() {
 						{t("footer.githublink")}
 						<br />
 					</a>
-					<a href="https://discord.gg/j6zvJw7tRg">
+					<a href="https://discord.com/thescratchchannel/channels/j6zvJw7tRg">
 						{t("footer.discord")}
 					</a>
 				</div>
