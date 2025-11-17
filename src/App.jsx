@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Header from "./components/Header";
 import MainContent from "./pages/MainContent";
 import Footer from "./components/Footer";
@@ -94,52 +95,54 @@ function App() {
 	}
 
 	return (
-		<Router>
-			<Header />
-			<Routes>
-				<Route path="/" element={<MainContent />} />
-				<Route
-					path="/articles/create"
-					element={
-						user && profile?.writer ? (
-							<CreateArticle user={user} profile={profile} />
-						) : (
-							<p>Not authorized</p>
-						)
-					}
-				/>
-				<Route
-					path="/users/:username/admin/create"
-					element={
-						user && profile?.writer ? (
-							<MakeAdmin user={user} profile={profile} />
-						) : (
-							<p>Not authorized</p>
-						)
-					}
-				/>
-				<Route
-					path="/admin/users"
-					element={
-						user && profile?.writer ? (
-							<UserList />
-						) : (
-							<p>Not authorized</p>
-						)
-					}
-				/>
-				<Route path="/about" element={<About />} />
-				<Route
-					path="/:category/article/:filename"
-					element={<ArticlePage />}
-				/>
-				<Route path="/account" element={<Account />} />
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/signup" element={<SignUpForm />} />
-				<Route path="/lang" element={<LangPage />} />
-			</Routes>
-			<Footer />
-		</Router>
+		<HelmetProvider>
+			<Router>
+				<Header />
+				<Routes>
+					<Route path="/" element={<MainContent />} />
+					<Route
+						path="/articles/create"
+						element={
+							user && profile?.writer ? (
+								<CreateArticle user={user} profile={profile} />
+							) : (
+								<p>Not authorized</p>
+							)
+						}
+					/>
+					<Route
+						path="/users/:username/admin/create"
+						element={
+							user && profile?.writer ? (
+								<MakeAdmin user={user} profile={profile} />
+							) : (
+								<p>Not authorized</p>
+							)
+						}
+					/>
+					<Route
+						path="/admin/users"
+						element={
+							user && profile?.writer ? (
+								<UserList />
+							) : (
+								<p>Not authorized</p>
+							)
+						}
+					/>
+					<Route path="/about" element={<About />} />
+					<Route
+						path="/:category/article/:filename"
+						element={<ArticlePage />}
+					/>
+					<Route path="/account" element={<Account />} />
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/signup" element={<SignUpForm />} />
+					<Route path="/lang" element={<LangPage />} />
+				</Routes>
+				<Footer />
+			</Router>
+		</HelmetProvider>
 	);
 }
 
