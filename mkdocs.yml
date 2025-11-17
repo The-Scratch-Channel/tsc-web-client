@@ -4,4 +4,3 @@ repo_url: https://github.com/The-Scratch-Channel/tsc-web-client/
 site_url: https://thescratchchannel.vercel.app/
 theme:
   name: readthedocs
-  user_color_mode_toggle: true
