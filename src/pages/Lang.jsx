@@ -16,7 +16,7 @@ import es from "../i18n/es.json";
 import eo from "../i18n/eo.json";
 import bg from "../i18n/bg.json";
 import lol from "../i18n/lol.json";
-import rbe from "../i18n/lol.json";
+import rbe from "../i18n/rbe.json";
 import hb from "../i18n/hb.json";
 
 // flag icons
@@ -70,12 +70,12 @@ export default function LangPage() {
 		{ lang: "[[Hyperlink Blocked]]", key: "hb", json: hb },
 	];
 
-	const data = languages.map((l) => {
-		if (l.key === "en") return { lang: l.lang, completion: 100 };
+	const data = languages.map((language) => {
+		if (language.key === "en") return { lang: language.lang, completion: 100 };
 		const totalKeys = countKeys(en);
-		const translatedKeys = countTranslatedKeys(en, l.json);
+		const translatedKeys = countTranslatedKeys(en, language.json);
 		const completion = Math.round((translatedKeys / totalKeys) * 100);
-		return { lang: l.lang, completion };
+		return { lang: language.lang, completion };
 	});
 
 	return (
