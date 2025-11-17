@@ -16,7 +16,7 @@ import es from "../i18n/es.json";
 import eo from "../i18n/eo.json";
 import bg from "../i18n/bg.json";
 import lol from "../i18n/lol.json";
-import rbe from "../i18n/lol.json";
+import rbe from "../i18n/rbe.json";
 import hb from "../i18n/hb.json";
 
 // flag icons
