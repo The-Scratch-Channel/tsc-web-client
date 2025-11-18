@@ -15,4 +15,4 @@ If you want to contribute to the project, head to [our developer documentation](
 
 ## Support
 
-For support on general bugs, go to the Issues tab. For Security issues, create a vuneribility report.
+For support on general bugs, go to the Issues tab. For Security issues, create a vulneribility report.
