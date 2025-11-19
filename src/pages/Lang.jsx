@@ -71,7 +71,8 @@ export default function LangPage() {
 	];
 
 	const data = languages.map((language) => {
-		if (language.key === "en") return { lang: language.lang, completion: 100 };
+		if (language.key === "en")
+			return { lang: language.lang, completion: 100 };
 		const totalKeys = countKeys(en);
 		const translatedKeys = countTranslatedKeys(en, language.json);
 		const completion = Math.round((translatedKeys / totalKeys) * 100);

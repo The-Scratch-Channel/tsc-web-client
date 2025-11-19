@@ -4,7 +4,6 @@ import { db, auth } from "../firebaseConfig";
 import { doc, getDoc, updateDoc, increment, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { marked } from "marked";
-import { Helmet } from "react-helmet-async";
 
 export default function ArticlePage() {
 	const { filename, category } = useParams();
