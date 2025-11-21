@@ -505,12 +505,6 @@ export default function MainContent() {
 
 	return (
 		<div className="page">
-			<Helmet>
-				<meta
-					name="description"
-					content="The Scratch Channel is an amateur journalist site about Scratch and its mods."
-				/>
-			</Helmet>
 			<h1 style={{ textAlign: "center" }}>{selectedCategory}</h1>
 			<button
 				className="back-btn"
