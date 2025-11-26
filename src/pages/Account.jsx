@@ -32,7 +32,7 @@ export default function Account() {
 			{user ? (
 				<>
 					<p>
-						{t("account.welcome")}, {profile.username}!
+						{t("account.welcome")}, {profile.email}!
 					</p>
 					<button onClick={handleLogout}>
 						{t("account.logout")}
@@ -46,6 +46,23 @@ export default function Account() {
 							{t("account.login")}
 						</Link>
 						<Link to="/signup">{t("account.signup")}</Link>
+					</div>
+				</>
+			)}
+		</div>
+	);
+}					<button onClick={handleLogout}>
+						{t("account.logout")}
+					</button>
+				</>
+			) : (
+				<>
+					<p>{t("account.liketodo")}</p>
+					<div style={{ marginTop: "10px" }}>
+						<Link to="/login" style={{ marginRight: "15px" }}>
+							{t("account.login")}
+						</Link>
+						<Link to="/signup">{t("account.username")}</Link>
 					</div>
 				</>
 			)}
