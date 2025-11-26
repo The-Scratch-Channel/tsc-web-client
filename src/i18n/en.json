@@ -63,6 +63,7 @@
         "logout": "Log out",
         "login": "Log in",
         "signup": "Sign up",
-        "liketodo": "What would you like to do?"
+        "liketodo": "What would you like to do?", 
+		"emaillabel": "Email" 
     }
 }
