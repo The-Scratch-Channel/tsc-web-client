@@ -32,7 +32,7 @@ export default function Account() {
 			{user ? (
 				<>
 					<p>
-						{t("account.welcome")}, {user.email}!
+						{t("account.welcome")}, {user.username}!
 					</p>
 					<button onClick={handleLogout}>
 						{t("account.logout")}
