@@ -34,9 +34,6 @@ export default function Account() {
 					<p>
 						{t("account.welcome")}, {profile.username}!
 					</p>
-					<p>
-						{t("account.emaillabel")}: {user.email}
-					</p>
 					<button onClick={handleLogout}>
 						{t("account.logout")}
 					</button>
