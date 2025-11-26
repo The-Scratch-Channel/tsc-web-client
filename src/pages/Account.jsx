@@ -51,7 +51,9 @@ export default function Account() {
 			)}
 		</div>
 	);
-}					<button onClick={handleLogout}>
+}					
+                <>
+                    <button onClick={handleLogout}>
 						{t("account.logout")}
 					</button>
 				</>
