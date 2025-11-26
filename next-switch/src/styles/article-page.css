@@ -1,0 +1,43 @@
+/* Article page layout */
+.article-full {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.article-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.article-thumbnail {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.article-thumbnail img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Reactions and reaction buttons */
+.reactions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+.reaction-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.reaction-btn.animate {
+    transform: scale(1.4);
+}

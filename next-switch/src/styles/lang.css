@@ -1,0 +1,24 @@
+#lang-page {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.lang-btn-div {
+    margin-bottom: 0.25rem;
+    padding: 1rem;
+    background-color: var(--btn-bg);
+    cursor: pointer;
+    border-radius: 12px;
+}
+.lang-btn-div button {
+    background: none;
+    border: none;
+    color: #4e97fe;
+    font-weight: 1000;
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+.lang-flag {
+    height: 2.5rem;
+    width: auto;
+    margin-bottom: -13px;
+}
