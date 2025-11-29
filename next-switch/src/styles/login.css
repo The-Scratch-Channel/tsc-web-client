@@ -1,0 +1,45 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-input {
+  width: 90%;
+  padding: 12px 16px;
+  border: 2px solid var(--highlight-color);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-size: 120%;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #550086;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+/* copied from article read more button */
+.submit-button {
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 90%;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.submit-button:hover {
+    background: #0056b3;
+    transition: background 0.2s ease;
+}
+
+

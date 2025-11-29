@@ -1,0 +1,156 @@
+/* Container for all articles */
+.articles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Article card styling */
+.article-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+}
+
+.article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* Thumbnail */
+.card-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Card header */
+.card-header {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.meta {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Content preview */
+.card-content {
+    padding: 15px;
+    flex: 1;
+}
+
+/* Read more link/button */
+.read-more {
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.read-more:hover {
+    background: #0056b3;
+    color: #0056b3;
+}
+
+/* Modal overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* Modal content */
+.modal-content {
+    background: #fff;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    animation: fadeInUp 0.3s ease;
+}
+
+/* Modal header */
+.modal-header {
+    margin-bottom: 15px;
+}
+
+.modal-header h2 {
+    margin: 0 0 5px;
+    font-size: 1.5rem;
+}
+
+.modal-header .meta {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Close button */
+.close-button {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+/* Thumbnail inside modal */
+.modal-thumbnail img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Full article content */
+.article-full-content {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

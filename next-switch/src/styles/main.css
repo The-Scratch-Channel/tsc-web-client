@@ -1,0 +1,198 @@
+:root {
+	--text-color: #111;
+	--heading-color: #4B4B4B;
+	--highlight-color: #855cd6;
+	--secondary-highlight-color: #9e80d8;
+	--selection-color: #4E97FE80;
+	--footer-bg: #f2f2f2;
+	--btn-bg: #f3f3f3;
+	--content-width: 942px;
+}
+
+:root.dark {
+	--text-color: #f5f5f5;
+	--heading-color: #ffffff;
+	--highlight-color: #855cd6;
+	--secondary-highlight-color: #9e80d8;
+	--selection-color: #4E97FE80;
+	--footer-bg: #2d2d2d;
+	--btn-bg: #383737;
+	background-color: #515050;
+	color: var(--text-color);
+}
+
+:root.dark body {
+	background-color: #1e1e1e;
+}
+
+:root.dark .page {
+	background-color: #1e1e1e;
+}
+
+:root.dark .article-card {
+	background: #1e1e1e;
+	color: var(--text-color);
+}
+
+:root.dark .card-header {
+	background: #2a2a2a;
+}
+
+:root.dark .read-more {
+	background: #2a2a2a;
+	color: var(--highlight-color);
+}
+
+:root.dark footer {
+	background-color: var(--footer-bg);
+	color: var(--text-color);
+}
+
+:root.dark .modal-content {
+	background: #1e1e1e;
+}
+
+:root.dark .modal-header {
+	background: #1e1e1e;
+}
+
+:root.dark input {
+	background-color: #2a2a2a;
+	color: var(--text-color);
+}
+
+/* Base styles */
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #fff;
+	color: var(--text-color);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+	margin: 0;
+	padding: 0;
+	line-height: 1.7em;
+	color: var(--text-color);
+}
+
+h1 {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: var(--heading-color);
+}
+
+h2 {
+	font-size: 2rem;
+	font-weight: bold;
+	color: var(--heading-color);
+}
+
+h3 {
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: var(--heading-color);
+}
+
+h4 {
+	font-size: 1rem;
+	font-weight: bold;
+	color: var(--heading-color);
+}
+
+h5 {
+	font-size: 0.85rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: var(--heading-color);
+}
+
+/* Links */
+a {
+	color: var(--highlight-color);
+	font-weight: bold;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	color: #3e84ea;
+}
+/* Page wrapper */
+.page {
+	display: block;
+	margin: 0 auto;
+	background-color: #fefefe;
+	padding: 20px;
+	min-height: 680px;
+	width: 100%;
+	max-width: var(--content-width);
+	box-sizing: border-box;
+	flex: 1 0 auto;
+}
+
+
+/* Responsive media queries */
+@media only screen and (max-width: 479px) {
+
+	.page,
+	.nav-content {
+		width: 100%;
+		padding: 0 10px;
+	}
+	.nav-right {
+		gap: 0.5rem;
+	}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+	.page,
+	.nav-content {
+		width: 480px;
+		padding: 0 15px;
+	}
+	.nav-right {
+		gap: 0.5rem;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 941px) {
+
+	.page,
+	.nav-content {
+		width: 768px;
+		padding: 0 20px;
+	}
+	.nav-right {
+		gap: 0.5rem;
+	}
+}
+
+@media only screen and (min-width: 942px) {
+
+	.page,
+	.nav-content {
+		width: var(--content-width);
+	}
+}
+
+::selection {
+	background-color: var(--selection-color);
+}
+
+/* responsivity fix, dont delete or the site looks bad on mobile */
+html, body {
+	overflow-x: hidden;
+}

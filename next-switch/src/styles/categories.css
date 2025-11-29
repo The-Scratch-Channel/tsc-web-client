@@ -1,0 +1,138 @@
+/* Page container */
+.page {
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 0px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  position: relative;
+}
+
+/* Header */
+.page h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.page p {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.categories-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
+    justify-content: start; /* aligns grid items to the left */
+}
+
+
+.category-card {
+  text-align: center;
+  padding: 4px 0 4px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+}
+.category-card:hover {
+  text-decoration: underline 0.4rem;
+  text-decoration-skip-ink: none;
+}
+/* Individual article card */
+.article-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Thumbnail image */
+.card-thumbnail img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Card header */
+.card-header {
+  padding: 15px;
+}
+
+.card-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+}
+
+.card-header .meta {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.card-header .meta span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Card content preview */
+.card-content {
+  padding: 0 15px 15px 15px;
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: --text-color;
+}
+
+/* Read more button */
+.read-more {
+  padding: 10px 15px;
+  background-color: #007acc;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.read-more:hover {
+  background-color: #005fa3;
+}
+
+/* Back to categories button */
+.back-btn {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #e04e4e;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.5s ease;
+  text-decoration: none;
+  border: none;
+}
+
+.back-btn:hover {
+  background-color: #ff6b6b;
+}
+
+#categories-header {
+  background-color: var(--secondary-highlight-color);
+  width: 100vw;
+  padding-left: 20px;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
