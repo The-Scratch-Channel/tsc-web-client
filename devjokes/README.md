@@ -6,7 +6,9 @@ DevJokes are pages for developers that are publicly available on the TSC repo an
 1st, go to your folder and make a commit like a folder for sounds or images. Then, delete the placeholder file, called DeleteMe! or removeme.
 ## Rules of DevJokes
 Please do not include any of the following:
-* 1. Heavy swearing (Minor swears like damn or hell may be allowed)
-  2. Racism or racial slurs
-  3. Sexism. (Respect others no matter sexuality or gender!)
-  4. NSFW
+## Rules of DevJokes
+Please do not include any of the following:
+1. Heavy swearing (Minor swears like damn or hell may be allowed)
+2. Racism or racial slurs
+3. Sexism. (Respect others no matter sexuality or gender!)
+4. NSFW
