@@ -1,7 +1,7 @@
 # DevJokes
 
 ## What are DevJokes?
-DevJokes are easter eggs/secrets that are publicly available on the TSC repo and site. These are for laughs or just not knowing what to work on but wanting to work on something.
+DevJokes are pages for developers that are publicly available on the TSC repo and site. These are for laughs or just not knowing what to work on but wanting to work on something.
 ## How to comit in you designated folder
 1st, make a comit like a folder for sounds or images. Then, delete the placeholder file, called DeleteMe! or removeme.
 ## Rules of DevJokes
