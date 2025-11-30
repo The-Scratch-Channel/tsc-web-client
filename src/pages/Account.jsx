@@ -6,7 +6,8 @@ import { useTranslation } from "react-i18next";
 
 export default function Account() {
 	const [user, setUser] = useState(null);
-	const [t, i18n] = useTranslation();
+	const { t } = useTranslation(); // Proper destructuring to only get t
+
 	useEffect(() => {
 		// listen for auth state changes any change causes this
 		const removeCookie = onAuthStateChanged(auth, (currentUser) => {
@@ -27,14 +28,41 @@ export default function Account() {
 		}
 	};
 
+	const getUsername = (user) => {
+		if (!user) return "";
+		// Prefer displayName, fall back to the email local-part (before @), then uid
+		if (user.displayName) return user.displayName;
+		if (user.email) return user.email.split("@")[0];
+		return user.uid || "";
+	};
+
+	const username = getUsername(user);
+
 	return (
 		<div style={{ padding: "20px", textAlign: "center" }}>
 			{user ? (
-				<>
+				<> 
 					<p>
-						{t("account.welcome")}, {user.displayName}!
+						{t("account.welcome")}, {username}!
 					</p>
 					<button onClick={handleLogout}>
+						{t("account.logout")}
+					</button>
+				</>
+			) : (
+				<> 
+					<p>{t("account.liketodo")}</p>
+					<div style={{ marginTop: "10px" }}>
+						<Link to="/login" style={{ marginRight: "15px" }}>
+							{t("account.login")}
+						</Link>
+						<Link to="/signup">{t("account.signup")}</Link>
+					</div>
+					</>
+				)}
+			</div>
+	);
+}					<button onClick={handleLogout}>
 						{t("account.logout")}
 					</button>
 				</>
