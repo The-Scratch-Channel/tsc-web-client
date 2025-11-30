@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Account() {
 	const [user, setUser] = useState(null);
-	const { t } = useTranslation(); // Proper destructuring to only get t
+	const [t, i18n] = useTranslation(); // Proper destructuring to only get t
 
 	useEffect(() => {
 		// listen for auth state changes any change causes this
