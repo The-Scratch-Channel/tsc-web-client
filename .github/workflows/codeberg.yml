@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: CODEBERG
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          npm install
+          npm run build
+
+      - run: |
+          git clone https://${{ secrets.CODEBERG_USERNAME }}:${{ secrets.CODEBERG_TOKEN }}@codeberg.org/tsc/pages repo
+          rm -rf repo/dist repo/code
+          mkdir -p repo/dist repo/code
+          cp -r dist/* repo/dist/
+          cp -r ./* repo/code/
+          rm -rf repo/code/repo
+
+      - run: |
+          cd repo
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Deploy" || true
+          git push
