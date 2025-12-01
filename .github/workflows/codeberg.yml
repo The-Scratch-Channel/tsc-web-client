@@ -18,7 +18,7 @@ jobs:
           npm run build
 
       - run: |
-          git clone https://${{ secrets.CODEBERG_USERNAME }}:${{ secrets.CODEBERG_TOKEN }}@codeberg.org/tsc/pages repo
+          git clone https://${{ secrets.CODEBERG_USERNAME }}:${{ secrets.CODEBERG_TOKEN }}@codeberg.org/thescratchchannel/pages repo
           rm -rf repo/dist repo/code
           mkdir -p repo/dist repo/code
           cp -r dist/* repo/dist/
