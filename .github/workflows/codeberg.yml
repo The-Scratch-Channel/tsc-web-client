@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -22,13 +22,12 @@ jobs:
           rm -rf repo/dist repo/code
           mkdir -p repo/dist repo/code
           cp -r dist/* repo/dist/
-          cp -r ./* repo/code/
-          rm -rf repo/code/repo
+          rsync -av --exclude='repo' --exclude='.git' ./ repo/code/
 
       - run: |
           cd repo
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "Deploy" || true
+          git diff --cached --quiet || git commit -m "Deploy"
           git push
