@@ -28,8 +28,6 @@ import "./styles/categories.css";
 import "./styles/editor.css";
 import "./styles/lang.css";
 import "./styles/login.css";
-import "./styles/UserList.css";
-import "./styles/account.css";
 
 /**
  * Root React component that initializes authentication/profile state and renders the app routes.

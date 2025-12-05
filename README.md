@@ -1,7 +1,5 @@
 # Welcome To The Scratch Channel
 
-[![Build Monitor](https://github.com/The-Scratch-Channel/tsc-web-client/actions/workflows/test.yml/badge.svg)](https://github.com/The-Scratch-Channel/tsc-web-client/actions/workflows/test.yml) ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/The-Scratch-Channel/tsc-web-client?utm_source=oss&utm_medium=github&utm_campaign=The-Scratch-Channel%2Ftsc-web-client&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
-
 This is the official repo for The Scratch Channel. The Scratch Channel is an unofficial Scratch-related news site, available online at <https://thescratchchannel.vercel.app>
 
 > [!IMPORTANT]
@@ -17,4 +15,4 @@ If you want to contribute to the project, head to [our developer documentation](
 
 ## Support
 
-For support on general bugs, go to the Issues tab. For Security issues, create a vuneribility report.
+For support on general bugs, go to the Issues tab. For Security issues, create a vulneribility report.
