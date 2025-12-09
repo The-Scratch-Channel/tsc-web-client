@@ -1,0 +1,89 @@
+/* This is not my code, I took it with permission from another site */
+.ai-panel {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 320px;
+	height: 420px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	display: flex;
+	flex-direction: column;
+	z-index: 9999;
+}
+
+.ai-panel.expanded {
+	width: 520px;
+	height: 70vh;
+}
+
+.ai-header {
+	cursor: move;
+	background: #4e97fe;
+	color: white;
+	padding: 8px 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: bold;
+}
+
+.ai-controls button {
+	margin-left: 6px;
+	background: transparent;
+	border: none;
+	color: white;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.ai-chat {
+	flex: 1;
+	overflow-y: auto;
+	padding: 8px;
+	font-size: 14px;
+}
+
+.msg {
+	margin-bottom: 6px;
+	padding: 6px 8px;
+	border-radius: 6px;
+}
+
+.msg.user {
+	background: #dbeafe;
+	align-self: flex-end;
+}
+
+.msg.assistant {
+	background: #f3f4f6;
+}
+
+.ai-input {
+	display: flex;
+	gap: 6px;
+	padding: 8px;
+	border-top: 1px solid #ddd;
+}
+
+.ai-input input {
+	flex: 1;
+	padding: 6px;
+}
+
+.ai-fab {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 9999;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border: none;
+	background: #4e97fe;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
