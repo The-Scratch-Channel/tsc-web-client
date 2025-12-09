@@ -13,7 +13,7 @@ export default function AIAssistant() {
 	const dragging = useRef(false);
 	const offset = useRef({ x: 0, y: 0 }); // initial position
 
-	const [visible, setVisible] = useState(true);
+	const [visible, setVisible] = useState(false);
 	const [expanded, setExpanded] = useState(false);
 	const [messages, setMessages] = useState([]);
 	const [input, setInput] = useState("");
