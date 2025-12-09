@@ -12,6 +12,7 @@ import SignUpForm from "./pages/SignUp";
 import MakeAdmin from "./pages/MakeAdmin";
 import UserList from "./pages/UserList";
 import LangPage from "./pages/Lang";
+import AIAssistant from "./pages/AIAssistant";
 
 import { auth, db } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
@@ -141,6 +142,7 @@ function App() {
 				<Route path="/lang" element={<LangPage />} />
 			</Routes>
 			<Footer />
+			<AIAssistant />
 		</Router>
 	);
 }
