@@ -1,3 +1,10 @@
+/* 
+  This is like 75% not my code. 
+  I found another site using it like this. 
+  So I just took it (with permission). 
+
+*/
+
 import React, { useRef, useState } from "react";
 import "../styles/AI.css";
 
