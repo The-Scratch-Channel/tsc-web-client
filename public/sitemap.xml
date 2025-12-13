@@ -40,6 +40,13 @@
         </url>
 
         <url>
+            <loc>https://thescratchchannel.vercel.app/TSC%20Update%20Log/article/71CN2Jwogq8B2AppOJSU</loc>
+            <lastmod>2025-12-13</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+
+        <url>
             <loc>https://thescratchchannel.vercel.app/TSC%20Update%20Log/article/7V5wkHzj5Sm10IxzYQ9e</loc>
             <lastmod>2025-09-26</lastmod>
             <changefreq>weekly</changefreq>
@@ -63,6 +70,13 @@
         <url>
             <loc>https://thescratchchannel.vercel.app/Scratch%20News/article/E8Yth9Q5Wauf1UPzTyTY</loc>
             <lastmod>2025-10-03</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+
+        <url>
+            <loc>https://thescratchchannel.vercel.app/TSC%20Announcements/article/EhizST0n4221pzZQzhBK</loc>
+            <lastmod>2025-12-13</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
         </url>
