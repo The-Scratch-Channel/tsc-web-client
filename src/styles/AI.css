@@ -55,10 +55,12 @@
 .msg.user {
 	background: #dbeafe;
 	align-self: flex-end;
+	color: var(--ai-color);
 }
 
 .msg.assistant {
 	background: #f3f4f6;
+	color: var(--ai-color);
 }
 
 .ai-input {

@@ -11,6 +11,7 @@
 
 :root.dark {
 	--text-color: #f5f5f5;
+	--ai-color: #000;
 	--heading-color: #ffffff;
 	--highlight-color: #855cd6;
 	--secondary-highlight-color: #9e80d8;
