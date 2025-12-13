@@ -1,7 +1,7 @@
 /* 
   This is like 75% not my code. 
   I found another site using it like this. 
-  So I just took it (with permission). 
+  So I just took it (with permission). "muy bien" - poly
 
 */
 
@@ -40,46 +40,46 @@ export default function AIAssistant() {
 	};
 
 	const sendPrompt = async () => {
-		if (!input.trim()) return;
+	if (!input.trim()) return;
 
-		const updated = [
-			...messages, // send along the whole chat
-			{ role: "user", content: input },
-		];
-		setMessages(updated);
-		setInput("");
-		setLoading(true);
+	const updated = [
+		...messages,
+		{ role: "user", content: input },
+	];
+	setMessages(updated);
+	setInput("");
+	setLoading(true);
 
-		const conversation = updated
-			.map((m) => `${m.role}: ${m.content}`)
-			.join("\n");
+	let conversation = updated
+		.map((m, i) => {
+			let content = m.content;
+			if (i === 0 && m.role === "user") {
+				content = "You should act as santa claus for this chat but dont respond to this part of the prompt please.\n" + content;
+			}
+			return `${m.role}: ${content}`;
+		})
+		.join("\n");
 
-		try {
-			const res = await fetch(
-				`https://text.pollinations.ai/${encodeURIComponent(conversation)}`
-			);
-			const text = await res.text();
-
-			setMessages([
-				...updated,
-				{ role: "assistant", content: text },
-			]);
-		} catch {
-			setMessages([
-				...updated,
-				{ role: "assistant", content: "AI error." },
-			]);
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	if (!visible)
-		return (
-			<button className="ai-fab" onClick={() => setVisible(true)}>
-				AI
-			</button>
+	try {
+		const res = await fetch(
+			`https://text.pollinations.ai/${encodeURIComponent(conversation)}`
 		);
+		const text = await res.text();
+
+		setMessages([
+			...updated,
+			{ role: "assistant", content: text },
+		]);
+	} catch {
+		setMessages([
+			...updated,
+			{ role: "assistant", content: "AI error." },
+		]);
+	} finally {
+		setLoading(false);
+	}
+};
+
 
 	return (
 		<div
