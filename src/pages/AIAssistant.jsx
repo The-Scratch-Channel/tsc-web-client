@@ -89,7 +89,7 @@ export default function AIAssistant() {
 			onMouseUp={onMouseUp}
 		>
 			<div className="ai-header" onMouseDown={onMouseDown}>
-				<span>AI Assistant</span>
+				<span>Speak to Santa!</span>
 				<div className="ai-controls">
 					<button onClick={() => setExpanded(!expanded)}>
 						{expanded ? "–" : "▢"}
