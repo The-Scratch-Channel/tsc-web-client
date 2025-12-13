@@ -27,11 +27,16 @@ export default function ChristmasPlayer() {
     audio.src = track.file;
     audio.volume = 0.25;
 
+    const handleEnded = () => next();
+    audio.addEventListener('ended', handleEnded);
+
     if (playing) {
       audio.play().catch(() => {});
     } else {
       audio.pause();
     }
+
+    return () => audio.removeEventListener('ended', handleEnded);
   }, [index, playing, track.file]);
 
   const next = () => {
