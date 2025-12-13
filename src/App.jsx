@@ -13,6 +13,8 @@ import MakeAdmin from "./pages/MakeAdmin";
 import UserList from "./pages/UserList";
 import LangPage from "./pages/Lang";
 import AIAssistant from "./pages/AIAssistant";
+import Snow from "./components/Snow";
+import ChristmasPlayer from "./pages/ChristmasPlayer";
 
 import { auth, db } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
@@ -98,6 +100,7 @@ function App() {
 
 	return (
 		<Router>
+			<Snow />
 			<Header />
 			<Routes>
 				<Route path="/" element={<MainContent />} />
@@ -143,6 +146,7 @@ function App() {
 			</Routes>
 			<Footer />
 			<AIAssistant />
+			<ChristmasPlayer />
 		</Router>
 	);
 }

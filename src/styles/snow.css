@@ -1,0 +1,21 @@
+.snowflake {
+	position: fixed;
+	top: -10px;
+	width: 6px;
+	height: 6px;
+	background: white;
+	border-radius: 50%;
+	opacity: 0.85;
+	pointer-events: none;
+	z-index: 9999;
+
+	animation-name: fall;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+	to {
+		transform: translateY(var(--fall-distance));
+	}
+}

@@ -1,0 +1,63 @@
+.xmas-player {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	width: 240px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	z-index: 9998;
+	display: flex;
+	flex-direction: column;
+}
+
+.xmas-header {
+	background: #b91c1c;
+	color: white;
+	padding: 8px 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: bold;
+}
+
+.xmas-controls button {
+	background: transparent;
+	border: none;
+	color: white;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.xmas-body {
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+}
+
+.xmas-body button {
+	border: none;
+	background: #b91c1c;
+	color: white;
+	padding: 6px 12px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.xmas-fab {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	z-index: 9998;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border: none;
+	background: #b91c1c;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
