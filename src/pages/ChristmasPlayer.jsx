@@ -36,6 +36,21 @@ export default function ChristmasPlayer() {
       audio.pause();
     }
 
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: 'The Scratch Channel',
+        album: 'Christmas',
+      });
+
+      navigator.mediaSession.setActionHandler('play', () => setPlaying(true));
+      navigator.mediaSession.setActionHandler('pause', () => setPlaying(false));
+      navigator.mediaSession.setActionHandler('nexttrack', next);
+      navigator.mediaSession.setActionHandler('previoustrack', prev);
+
+      navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
+    }
+
     return () => audio.removeEventListener('ended', handleEnded);
   }, [index, playing, track.file]);
 
