@@ -8,17 +8,33 @@ const TRACKS = [
 
 export default function ChristmasPlayer() {
 	const isDecember = new Date().getMonth() === 11;
-	if (!isDecember) return null;
 
 	const audioRef = useRef(null);
 
-	const [visible, setVisible] = useState(true);
+	const [visible, setVisible] = useState(isDecember);
 	const [playing, setPlaying] = useState(false);
 	const [index, setIndex] = useState(
 		Number(localStorage.getItem("xmas-track")) || 0
 	);
 
 	const track = TRACKS[index];
+
+	// finnaly fixed lint errors here yay
+	const next = () => {
+		setIndex((i) => {
+			const nextIndex = (i + 1) % TRACKS.length;
+			localStorage.setItem("xmas-track", nextIndex);
+			return nextIndex;
+		});
+	};
+
+	const prev = () => {
+		setIndex((i) => {
+			const prevIndex = (i - 1 + TRACKS.length) % TRACKS.length;
+			localStorage.setItem("xmas-track", prevIndex);
+			return prevIndex;
+		});
+	};
 
 	useEffect(() => {
 		if (!audioRef.current) return;
@@ -58,20 +74,9 @@ export default function ChristmasPlayer() {
 		}
 
 		return () => audio.removeEventListener("ended", handleEnded);
-	}, [index, playing, track.file]);
+	}, [track, playing]);
 
-	const next = () => {
-		setIndex((i) => (i + 1) % TRACKS.length);
-		localStorage.setItem("xmas-track", (index + 1) % TRACKS.length);
-	};
-
-	const prev = () => {
-		setIndex((i) => (i - 1 + TRACKS.length) % TRACKS.length);
-		localStorage.setItem(
-			"xmas-track",
-			(index - 1 + TRACKS.length) % TRACKS.length
-		);
-	};
+	if (!isDecember || !visible) return null;
 
 	return (
 		<div className="xmas-player">
