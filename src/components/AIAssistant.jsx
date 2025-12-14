@@ -5,13 +5,13 @@
 
 */
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import "../styles/AI.css";
 
 export default function AIAssistant() {
 	const panelRef = useRef(null);
 	const dragging = useRef(false);
-	const offset = useRef({ x: 0, y: 0 }); // initial position
+	const offset = useRef({ x: 0, y: 0 });
 
 	const [visible, setVisible] = useState(false);
 	const [expanded, setExpanded] = useState(false);
@@ -19,8 +19,9 @@ export default function AIAssistant() {
 	const [input, setInput] = useState("");
 	const [loading, setLoading] = useState(false);
 
-	// allow the chat to be dragged
+	// Drag handlers
 	const onMouseDown = (e) => {
+		if (!panelRef.current) return;
 		dragging.current = true;
 		const rect = panelRef.current.getBoundingClientRect();
 		offset.current = {
@@ -30,7 +31,7 @@ export default function AIAssistant() {
 	};
 
 	const onMouseMove = (e) => {
-		if (!dragging.current) return;
+		if (!dragging.current || !panelRef.current) return;
 		panelRef.current.style.left = `${e.clientX - offset.current.x}px`;
 		panelRef.current.style.top = `${e.clientY - offset.current.y}px`;
 	};
@@ -39,6 +40,13 @@ export default function AIAssistant() {
 		dragging.current = false;
 	};
 
+	// clean up drag listeners if mouse leaves window
+	useEffect(() => {
+		window.addEventListener("mouseup", onMouseUp);
+		return () => window.removeEventListener("mouseup", onMouseUp);
+	}, []);
+
+	// Send prompt to AI
 	const sendPrompt = async () => {
 		if (!input.trim()) return;
 
@@ -47,12 +55,12 @@ export default function AIAssistant() {
 		setInput("");
 		setLoading(true);
 
-		let conversation = updated
+		const conversation = updated
 			.map((m, i) => {
 				let content = m.content;
 				if (i === 0 && m.role === "user") {
 					content =
-						"You should act as santa claus for this chat but dont respond to this part of the prompt please.\n" +
+						"You should act as Santa Claus for this chat but don't respond to this part of the prompt.\n" +
 						content;
 				}
 				return `${m.role}: ${content}`;
@@ -64,7 +72,6 @@ export default function AIAssistant() {
 				`https://text.pollinations.ai/${encodeURIComponent(conversation)}`
 			);
 			const text = await res.text();
-
 			setMessages([...updated, { role: "assistant", content: text }]);
 		} catch {
 			setMessages([
@@ -76,19 +83,25 @@ export default function AIAssistant() {
 		}
 	};
 
+	// Keyboard Enter handler
+	const onKeyDown = (e) => {
+		if (e.key === "Enter") sendPrompt();
+	};
+
 	if (!visible)
 		return (
 			<button className="ai-fab" onClick={() => setVisible(true)}>
 				AI
 			</button>
 		);
-	if (!input.trim()) return;
+
 	return (
 		<div
 			ref={panelRef}
 			className={`ai-panel ${expanded ? "expanded" : ""}`}
 			onMouseMove={onMouseMove}
 			onMouseUp={onMouseUp}
+			style={{ position: "absolute", top: "100px", left: "100px" }}
 		>
 			<div className="ai-header" onMouseDown={onMouseDown}>
 				<span>Speak to Santa!</span>
@@ -114,9 +127,11 @@ export default function AIAssistant() {
 					value={input}
 					onChange={(e) => setInput(e.target.value)}
 					placeholder="Ask anything…"
-					onKeyDown={(e) => e.key === "Enter" && sendPrompt()}
+					onKeyDown={onKeyDown}
 				/>
-				<button onClick={sendPrompt}>Send</button>
+				<button onClick={sendPrompt} disabled={loading}>
+					Send
+				</button>
 			</div>
 		</div>
 	);
