@@ -196,6 +196,7 @@ export default function MainContent() {
 				</div>
 				<div className="page">
 					<h1 style={{ textAlign: "center" }}>{t("main.welcome")}</h1>
+					<a style={{ textAlign: "center"}} href="/tracksanta" class="tracksanta"> {t("main.tracksanta")}</a>
 
 					{/* Admin Panel - Only visible to admins */}
 					{profile?.writer && (

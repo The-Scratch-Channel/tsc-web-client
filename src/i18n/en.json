@@ -32,7 +32,8 @@
         "readmore": "Read More",
         "by": "By",
         "date": "Date",
-        "category": "Category"
+        "category": "Category",
+        "tracksanta": "Track Santa"
     },
     "write": {
         "heading": "Create Article",

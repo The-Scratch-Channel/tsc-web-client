@@ -15,6 +15,7 @@ import LangPage from "./pages/Lang";
 import AIAssistant from "./pages/AIAssistant";
 import Snow from "./components/Snow";
 import ChristmasPlayer from "./pages/ChristmasPlayer";
+import SantaTracker from "./pages/Santa";
 
 import { auth, db } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
@@ -143,6 +144,7 @@ function App() {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/signup" element={<SignUpForm />} />
 				<Route path="/lang" element={<LangPage />} />
+				<Route path="/tracksanta" element={<SantaTracker />} />
 			</Routes>
 			<Footer />
 			<AIAssistant />
