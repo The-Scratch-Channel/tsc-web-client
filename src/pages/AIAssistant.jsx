@@ -5,7 +5,7 @@
 
 */
 
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "../styles/AI.css";
 
 export default function AIAssistant() {
@@ -40,53 +40,48 @@ export default function AIAssistant() {
 	};
 
 	const sendPrompt = async () => {
-	if (!input.trim()) return;
+		if (!input.trim()) return;
 
-	const updated = [
-		...messages,
-		{ role: "user", content: input },
-	];
-	setMessages(updated);
-	setInput("");
-	setLoading(true);
+		const updated = [...messages, { role: "user", content: input }];
+		setMessages(updated);
+		setInput("");
+		setLoading(true);
 
-	let conversation = updated
-		.map((m, i) => {
-			let content = m.content;
-			if (i === 0 && m.role === "user") {
-				content = "You should act as santa claus for this chat but dont respond to this part of the prompt please.\n" + content;
-			}
-			return `${m.role}: ${content}`;
-		})
-		.join("\n");
+		let conversation = updated
+			.map((m, i) => {
+				let content = m.content;
+				if (i === 0 && m.role === "user") {
+					content =
+						"You should act as santa claus for this chat but dont respond to this part of the prompt please.\n" +
+						content;
+				}
+				return `${m.role}: ${content}`;
+			})
+			.join("\n");
 
-	try {
-		const res = await fetch(
-			`https://text.pollinations.ai/${encodeURIComponent(conversation)}`
-		);
-		const text = await res.text();
+		try {
+			const res = await fetch(
+				`https://text.pollinations.ai/${encodeURIComponent(conversation)}`
+			);
+			const text = await res.text();
 
-		setMessages([
-			...updated,
-			{ role: "assistant", content: text },
-		]);
-	} catch {
-		setMessages([
-			...updated,
-			{ role: "assistant", content: "AI error." },
-		]);
-	} finally {
-		setLoading(false);
-	}
-};
-
+			setMessages([...updated, { role: "assistant", content: text }]);
+		} catch {
+			setMessages([
+				...updated,
+				{ role: "assistant", content: "AI error." },
+			]);
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	if (!visible)
-	  return (
-		<button className="ai-fab" onClick={() => setVisible(true)}>
-		  AI
-		</button>
-		) 
+		return (
+			<button className="ai-fab" onClick={() => setVisible(true)}>
+				AI
+			</button>
+		);
 	if (!input.trim()) return;
 	return (
 		<div
