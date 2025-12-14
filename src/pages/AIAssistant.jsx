@@ -81,6 +81,13 @@ export default function AIAssistant() {
 };
 
 
+	if (!visible)
+	  return (
+		<button className="ai-fab" onClick={() => setVisible(true)}>
+		  AI
+		</button>
+		) 
+	if (!input.trim()) return;
 	return (
 		<div
 			ref={panelRef}
