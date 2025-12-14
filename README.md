@@ -5,7 +5,7 @@
 This is the official repo for The Scratch Channel. The Scratch Channel is an unofficial Scratch-related news site, available online at <https://thescratchchannel.vercel.app>
 
 > [!IMPORTANT]
-> We are not affiliated with Scratch, the LifeLong Kindergarten Group, or Massachusessets Institute of Technology. News articles here are made by volunteers, not Scratch Team members.
+> We are not affiliated with Scratch, the Scratch Foundation, the Lifelong Kindergarten Group, or Massachusetts Institute of Technology. News articles here are made by volunteers, not Scratch Team members.
 
 ## Deployment
 
