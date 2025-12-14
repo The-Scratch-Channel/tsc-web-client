@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "../styles/ChristmasPlayer.css";
 
 const TRACKS = [
-  { title: "Last Christmas", file: "/audio/christmas/last-christmas.mp3" },
   { title: "Santa Tracker", file: "/audio/christmas/theme.mp3" },
   {	title: "Last Rizzmas", file: "/audio/christmas/last-rizzmas.mp3" }, 
 ];
