@@ -12,7 +12,7 @@ import SignUpForm from "./pages/SignUp";
 import MakeAdmin from "./pages/MakeAdmin";
 import UserList from "./pages/UserList";
 import LangPage from "./pages/Lang";
-import AIAssistant from "./pages/AIAssistant";
+import AIAssistant from "./components/AIAssistant";
 import Snow from "./components/Snow";
 import ChristmasPlayer from "./pages/ChristmasPlayer";
 import SantaTracker from "./pages/Santa";
