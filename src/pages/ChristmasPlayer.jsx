@@ -13,9 +13,11 @@ export default function ChristmasPlayer() {
 
 	const [visible, setVisible] = useState(isDecember);
 	const [playing, setPlaying] = useState(false);
-	const [index, setIndex] = useState(
-		Number(localStorage.getItem("xmas-track")) || 0
-	);
+	const [index, setIndex] = useState(() => {
+		const stored = localStorage.getItem("xmas-track");
+		const num = stored ? Number(stored) : 0;
+		return Math.max(0, Math.min(num, TRACKS.length - 1));
+	});
 
 	const track = TRACKS[index];
 
