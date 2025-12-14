@@ -3,7 +3,7 @@ import "../styles/ChristmasPlayer.css";
 
 const TRACKS = [
 	{ title: "Santa Tracker", file: "/audio/christmas/theme.mp3" },
-	{ title: "Last Rizzmas", file: "/audio/christmas/last-rizzmas.mp3" },
+	{ title: "Last Rizzmas", file: "/audio/christmas/last-rizzmas.mp3" }
 ];
 
 export default function ChristmasPlayer() {
@@ -58,6 +58,8 @@ export default function ChristmasPlayer() {
 				artist: "The Scratch Channel",
 				album: "Christmas",
 			});
+
+			console.log(track.title);
 
 			navigator.mediaSession.setActionHandler("play", () =>
 				setPlaying(true)
