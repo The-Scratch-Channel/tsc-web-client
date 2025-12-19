@@ -17,6 +17,7 @@ import Snow from "./components/Snow";
 import ChristmasPlayer from "./pages/ChristmasPlayer";
 import SantaTracker from "./pages/Santa";
 import NotFound from "./pages/404";
+import EmailVerification from "./pages/EmailVerification";
 
 import { auth, db } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
@@ -147,6 +148,7 @@ function App() {
 				<Route path="/lang" element={<LangPage />} />
 				<Route path="/tracksanta" element={<SantaTracker />} />
 				<Route path="/404" element={<NotFound />} />
+				<Route path="/verifyemail" element={<EmailVerification />} />
 			</Routes>
 			<Footer />
 			<AIAssistant />
