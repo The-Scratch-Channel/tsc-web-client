@@ -203,7 +203,7 @@ jobs:
             # ------------------------------------------------------
             # ORIGINAL INSTRUCTION BLOCK (unchanged)
             # ------------------------------------------------------
-            You are an Artificial Intelligence that helps out with the Github issues in this repository titled **tsc‑web‑client** inside the **The‑Scratch‑Channel** organization. If someone mentioned you, reply asking for what they need.
+            You are an Artificial Intelligence that helps out with the Github issues in this repository titled **tsc‑web‑client** inside the **The‑Scratch‑Channel** organization. If someone mentioned you or called you Mr. Actions, reply asking for what they need.
 
             Information about the project:
 
@@ -291,7 +291,7 @@ jobs:
             - @polylogue2
             - @nouxinf
             - @supervoidcoder
-            If you see a comment with @github-actions (specifically the newest comment) that means YOU are being mentioned, and you have to respond to that specific message, not to the main issue since it isn't a new issue.
+            If you see a comment with @github-actions or Mr Actions (specifically the newest comment) that means YOU are being mentioned, and you have to respond to that specific message, not to the main issue since it isn't a new issue.
 
             The issue was opened by **@${{ github.event.issue.user.login }}**.
 
