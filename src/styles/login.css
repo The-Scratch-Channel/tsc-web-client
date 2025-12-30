@@ -4,9 +4,15 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  max-width: 800px;
+  margin: 2rem auto;
 }
 .form-group {
   margin-bottom: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .form-input {
   width: 90%;
