@@ -21,34 +21,34 @@ export default function Header() {
 
 	return (
 		<header>
-		<div className="navigation">
-			<div className="nav-content">
-				<div className="nav-left">
-					<Link to="/">
-						<img src={TSC} alt="TSC Logo" />
-					</Link>
-					<Link to="/">{t("header.home")}</Link>
-					<Link to="/lang">{t("header.language")}</Link>
-					<Link to="/about">{t("header.about")}</Link>
-				</div>
-				<div className="nav-right">
-					<button
-						onClick={() => setDarkMode((prev) => !prev)}
-						className="dark-mode-btn"
-						aria-label="Toggle Dark Mode"
-					>
-						<i
-							className={
-								darkMode
-									? "fa-solid fa-sun"
-									: "fa-solid fa-moon"
-							}
-						/>
-					</button>
-					<Link to="/account">{t("header.account")}</Link>
+			<div className="navigation">
+				<div className="nav-content">
+					<div className="nav-left">
+						<Link to="/">
+							<img src={TSC} alt="TSC Logo" />
+						</Link>
+						<Link to="/">{t("header.home")}</Link>
+						<Link to="/lang">{t("header.language")}</Link>
+						<Link to="/about">{t("header.about")}</Link>
+					</div>
+					<div className="nav-right">
+						<button
+							onClick={() => setDarkMode((prev) => !prev)}
+							className="dark-mode-btn"
+							aria-label="Toggle Dark Mode"
+						>
+							<i
+								className={
+									darkMode
+										? "fa-solid fa-sun"
+										: "fa-solid fa-moon"
+								}
+							/>
+						</button>
+						<Link to="/account">{t("header.account")}</Link>
+					</div>
 				</div>
 			</div>
-		</div>
 		</header>
 	);
 }
