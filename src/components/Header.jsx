@@ -20,6 +20,7 @@ export default function Header() {
 	}, [darkMode]);
 
 	return (
+		<header>
 		<div className="navigation">
 			<div className="nav-content">
 				<div className="nav-left">
@@ -48,5 +49,6 @@ export default function Header() {
 				</div>
 			</div>
 		</div>
+		</header>
 	);
 }
