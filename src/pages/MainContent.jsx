@@ -196,6 +196,11 @@ export default function MainContent() {
 				</div>
 				<div className="page">
 					<h1 style={{ textAlign: "center" }}>{t("main.welcome")}</h1>
+					<button
+						onClick={() => navigate("/tracksanta")}
+						>
+						{t("main.tracksanta")}
+					</button>
 
 					{/* Admin Panel - Only visible to admins */}
 					{profile?.writer && (

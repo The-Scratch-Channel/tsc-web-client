@@ -59,6 +59,9 @@ export default function AIAssistant() {
 			.map((m, i) => {
 				let content = m.content;
 				if (i === 0 && m.role === "user") {
+					content =
+						"You should act as Santa Claus for this chat but don't respond to this part of the prompt.\n" +
+						content;
 				}
 				return `${m.role}: ${content}`;
 			})
@@ -101,7 +104,7 @@ export default function AIAssistant() {
 			style={{ position: "absolute", top: "100px", left: "100px" }}
 		>
 			<div className="ai-header" onMouseDown={onMouseDown}>
-				<span>TSC AI</span>
+				<span>Speak to Santa!</span>
 				<div className="ai-controls">
 					<button onClick={() => setExpanded(!expanded)}>
 						{expanded ? "–" : "▢"}
