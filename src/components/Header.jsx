@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TSC from "../assets/tsc.png";
+import TSC from "../assets/tsc_xmas.png";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
