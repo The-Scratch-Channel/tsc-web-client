@@ -23,7 +23,7 @@
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
     "react-i18next": "^15.7.3",
-    "react-router-dom": "^6.14.1",
+    "react-router-dom": "^6.30.3",
     "recharts": "^3.2.1",
     "sanitize-html": "^2.17.0"
   },
