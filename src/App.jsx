@@ -1,3 +1,4 @@
+import logo from './assets/logo.png';
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -18,6 +19,7 @@ import ChristmasPlayer from "./pages/ChristmasPlayer";
 import SantaTracker from "./pages/Santa";
 import NotFound from "./pages/404";
 import Discord from "./components/Discord";
+
 
 import { auth, db } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
@@ -79,6 +81,7 @@ function App() {
 					height: "100vh",
 				}}
 			>
+				<img src={logo} />
 				<div
 					style={{
 						border: "6px solid #4E97FE",
