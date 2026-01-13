@@ -2,19 +2,12 @@ import { useEffect, useState } from "react";
 import { db } from "../firebaseConfig";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
-import { auth } from "../firebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
+import { useAuthUser } from "../hooks/useAuth";
 
 export default function UserList() {
 	const [users, setUsers] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [user, setUser] = useState(null);
-
-	useEffect(() => {
-		onAuthStateChanged(auth, (u) => {
-			setUser(u);
-		});
-	}, []);
+	const { user } = useAuthUser();
 
 	useEffect(() => {
 		async function fetchUsers() {

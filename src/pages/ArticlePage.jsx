@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { db, auth } from "../firebaseConfig";
+import { db } from "../firebaseConfig";
 import { doc, getDoc, updateDoc, increment, setDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
 import { marked } from "marked";
+import { useAuthUser } from "../hooks/useAuth";
 
 export default function ArticlePage() {
 	const { filename, category } = useParams();
 	const [article, setArticle] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const [user, setUser] = useState(null);
+	const { user } = useAuthUser(); // simplified auth hook since we only need user
 	const [userReactions, setUserReactions] = useState({
 		thumbsUp: false,
 		thumbsDown: false,
@@ -44,12 +44,6 @@ export default function ArticlePage() {
 			}
 		};
 		setPageTitle();
-	}, []);
-
-	useEffect(() => {
-		onAuthStateChanged(auth, (u) => {
-			setUser(u);
-		});
 	}, []);
 
 	useEffect(() => {

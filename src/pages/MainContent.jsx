@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db, auth } from "../firebaseConfig";
+import { db } from "../firebaseConfig";
 import sanitizeHtml from "sanitize-html";
 import {
 	collection,
@@ -11,38 +11,19 @@ import {
 	increment,
 	setDoc,
 } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../hooks/useAuth";
 
 export default function MainContent() {
 	const [categories, setCategories] = useState([]); // all categories
 	const [articlesByCategory, setArticlesByCategory] = useState({}); // articles grouped by category
 	const [selectedCategory, setSelectedCategory] = useState(null); // currently selected category
-	const [user, setUser] = useState(null); // logged-in user
-	const [profile, setProfile] = useState(null); // user profile with admin status
+	const { user, profile } = useAuth(); // authentication and profile from custom hook
 	const [userReactions, setUserReactions] = useState({}); // current user's reactions
 	const [animate, setAnimate] = useState({}); // animation for reactions
 	const [stats, setStats] = useState({ totalArticles: 0, totalUsers: 0 }); // admin stats
 	const navigate = useNavigate();
 	const [t] = useTranslation();
-
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-			if (firebaseUser) {
-				setUser(firebaseUser);
-				const userDoc = await getDoc(
-					doc(db, "users", firebaseUser.uid)
-				);
-				if (userDoc.exists()) {
-					setProfile(userDoc.data());
-				}
-			} else {
-				setUser(null);
-				setProfile(null);
-			}
-		});
-		return () => unsubscribe();
-	}, []);
 
 	// Fetch articles from Firestore
 	useEffect(() => {

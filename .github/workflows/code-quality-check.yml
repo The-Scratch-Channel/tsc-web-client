@@ -1,0 +1,187 @@
+name: Code Quality Check
+
+# Run every 3 hours to check for duplicate code and efficiency issues
+on:
+  schedule:
+    # Run at minute 0 past every 3rd hour (00:00, 03:00, 06:00, etc.)
+    - cron: '0 */3 * * *'
+  # Allow manual trigger for testing
+  workflow_dispatch:
+  # Also run on pull requests to prevent duplicates from being merged
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  check-code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run duplicate code detection
+        id: jscpd
+        run: |
+          # Run jscpd and capture output
+          npm run check-duplicates > jscpd-output.txt 2>&1 || true
+          
+          # Check if duplicates were found
+          if grep -q "Found.*clones" jscpd-output.txt; then
+            echo "duplicates_found=true" >> $GITHUB_OUTPUT
+            cat jscpd-output.txt
+          else
+            echo "duplicates_found=false" >> $GITHUB_OUTPUT
+            echo "No significant code duplication found! ✅"
+          fi
+          
+      - name: Upload duplicate code report
+        if: steps.jscpd.outputs.duplicates_found == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: duplicate-code-report
+          path: jscpd-report/
+          retention-days: 30
+          
+      - name: Create or update issue for duplicates (scheduled runs only)
+        if: |
+          steps.jscpd.outputs.duplicates_found == 'true' && 
+          github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('jscpd-output.txt', 'utf8');
+            
+            // Parse jscpd output to extract key information
+            const cloneMatches = output.match(/Found (\d+) clones/);
+            const cloneCount = cloneMatches ? cloneMatches[1] : 'unknown';
+            
+            const percentageMatches = output.match(/(\d+\.\d+)%/);
+            const duplicatePercentage = percentageMatches ? percentageMatches[1] : 'unknown';
+            
+            const title = '🔍 Code Quality Alert: Duplicate Code Detected';
+            const currentDate = new Date().toISOString().split('T')[0];
+            
+            const body = `## Automated Code Quality Check - ${currentDate}
+            
+            The scheduled code quality check has detected duplicate code in the repository.
+            
+            ### Summary
+            - **Clones Found:** ${cloneCount}
+            - **Duplication Percentage:** ${duplicatePercentage}%
+            - **Check Run:** [View Workflow](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})
+            
+            ### Why This Matters
+            Code duplication can lead to:
+            - 🐛 Inconsistent bug fixes (fixing in one place but not others)
+            - 📈 Increased maintenance burden
+            - 🔄 Harder refactoring
+            - 📚 Reduced code readability
+            
+            ### Recommendations
+            Consider refactoring duplicate code by:
+            1. Creating reusable custom hooks for React patterns
+            2. Extracting common components
+            3. Using utility functions for shared logic
+            4. Creating higher-order components (HOCs) where appropriate
+            
+            ### Next Steps
+            1. Review the [duplicate code report](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) artifact
+            2. Identify the most impactful duplicates to refactor
+            3. Create focused PRs to eliminate duplication
+            
+            ---
+            
+            <details>
+            <summary>Raw JSCPD Output</summary>
+            
+            \`\`\`
+            ${output}
+            \`\`\`
+            
+            </details>
+            
+            This issue was automatically created by the Code Quality Check workflow.
+            `;
+            
+            // Check for existing open issues
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'code-quality,automated'
+            });
+            
+            const existingIssue = issues.find(issue => 
+              issue.title.includes('Code Quality Alert')
+            );
+            
+            if (existingIssue) {
+              // Update existing issue
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existingIssue.number,
+                body: `## Update - ${currentDate}\n\n${body}`
+              });
+              console.log(`Updated existing issue #${existingIssue.number}`);
+            } else {
+              // Create new issue
+              const newIssue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['code-quality', 'automated', 'enhancement']
+              });
+              console.log(`Created new issue #${newIssue.data.number}`);
+            }
+            
+      - name: Comment on PR with results
+        if: |
+          github.event_name == 'pull_request' &&
+          steps.jscpd.outputs.duplicates_found == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('jscpd-output.txt', 'utf8');
+            
+            const cloneMatches = output.match(/Found (\d+) clones/);
+            const cloneCount = cloneMatches ? cloneMatches[1] : 'unknown';
+            
+            const percentageMatches = output.match(/(\d+\.\d+)%/);
+            const duplicatePercentage = percentageMatches ? percentageMatches[1] : 'unknown';
+            
+            const comment = `## 🔍 Code Quality Check Results
+            
+            ⚠️ **Duplicate code detected in this PR**
+            
+            - **Clones Found:** ${cloneCount}
+            - **Duplication Percentage:** ${duplicatePercentage}%
+            
+            Please review the duplicate code report in the workflow artifacts and consider refactoring before merging.
+            
+            [View detailed report](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})
+            `;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
