@@ -17,7 +17,6 @@ import Snow from "./components/Snow";
 import ChristmasPlayer from "./pages/ChristmasPlayer";
 import SantaTracker from "./pages/Santa";
 import NotFound from "./pages/404";
-import Discord from "./components/Discord";
 
 import { auth, db } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
@@ -149,7 +148,6 @@ function App() {
 				<Route path="/tracksanta" element={<SantaTracker />} />
 				<Route path="/404" element={<NotFound />} />
 			</Routes>
-			<Discord />
 			<Footer />
 			<AIAssistant />
 			<ChristmasPlayer />
