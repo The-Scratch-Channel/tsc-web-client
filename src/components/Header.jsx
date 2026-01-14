@@ -21,7 +21,7 @@ export default function Header() {
 
 	return (
 		<header>
-			<div className="navigation">
+			<nav className="navigation">
 				<div className="nav-content">
 					<div className="nav-left">
 						<Link to="/">
