@@ -49,7 +49,7 @@ export default function Footer() {
 			</div>
 			<br />
 			<h4 className="footer-copyright-info" id="footer">
-				© {new Date().getFullYear()} The Scratch Channel • <a href="/?toggle_snow">Toggle Snow</a>
+				© {new Date().getFullYear()} The Scratch Channel
 			</h4>
 		</footer>
 	);
