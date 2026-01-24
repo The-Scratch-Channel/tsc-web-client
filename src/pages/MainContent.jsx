@@ -181,19 +181,21 @@ export default function MainContent() {
 
 		return (
 			<>
+				<nav>
 				<div id="categories-header">
-					<div className="categories-container">
-						{categories.map((cat) => (
-							<div
-								key={cat}
-								className="category-card"
-								onClick={() => setSelectedCategory(cat)}
-							>
-								{cat} ({articlesByCategory[cat]?.length || 0})
-							</div>
-						))}
+						<div className="categories-container">
+							{categories.map((cat) => (
+								<div
+									key={cat}
+									className="category-card"
+									onClick={() => setSelectedCategory(cat)}
+								>
+									{cat} ({articlesByCategory[cat]?.length || 0})
+								</div>
+							))}
+						</div>
 					</div>
-				</div>
+				</nav>
 				<div className="page">
 					<h1 style={{ textAlign: "center" }}>{t("main.welcome")}</h1>
 
