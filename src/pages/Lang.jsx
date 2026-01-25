@@ -109,7 +109,29 @@ export default function LangPage() {
 					<img className="lang-flag" src={eoFlag} alt="Esperanto" />
 					<button>Esperanto</button>
 				</div>
-				{/* the other languages are not available to use, because they are either parody languages or unmaintainable ones. before bringing one back, one must consult the dev team in an issue. */}
+				<div
+					className="lang-btn-div"
+					onClick={() => switchLanguage("rbe")}
+				>
+					<img className="lang-flag" src={rbeFlag} alt="Rock Bottom-ese" />
+					<button>Rock Bottomese</button>
+				</div>
+				<div
+					className="lang-btn-div"
+					onClick={() => switchLanguage("lol")}
+				>
+					<img className="lang-flag" src={lolFlag} alt="LOLCAT" />
+					<button>LOLCAT</button>
+				</div>
+				<div
+					className="lang-btn-div"
+					onClick={() => switchLanguage("hb")}
+				>
+					<img className="lang-flag" src={hbFlag} alt="[[BIG SHOT]]" />
+					<button>[[Hyperlink Blocked]]</button>
+				</div>
+				
+				
 			</div>
 			<h2>{t("misc.langprogress")}</h2>
 			<ResponsiveContainer width="100%" height={300}>
