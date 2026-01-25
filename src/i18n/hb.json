@@ -24,7 +24,7 @@
         "reviewlink": "[[Please set a 5 stars.]]",
         "forumlink": "LIGht>ners",
         "githublink": "[[git push]]",
-        "discord": "chat"
+        "discord": "[[Blue Chatting Device]]"
     },
     "main": {
         "welcome": "WELCOME TO THE [[Hyperlink Blocked]]",
@@ -45,7 +45,7 @@
         "cancel": "[[STOP! STOP! IT BURNNNSSSS!!]]",
         "unauthorised": "NO",
         "title-err": "[[Title is now gone.]]",
-        "title-placeholder": "[[What do you want to?]]"
+        "title-placeholder": "[[What do you want to   ?]]"
     },
     "signup": {
         "heading": "ACCOUNT NOW!!!!11",
@@ -60,9 +60,9 @@
     },
     "account": {
         "welcome": "[[Hyperlink Blocked]]",
-        "logout": "[[No! Don't leavings!!!!11]]",
+        "logout": "Mike... Why?",
         "login": "[[Log into my store]]",
         "signup": "[[Buy more Kromer!]]",
-        "liketodo": "YOUR [[choices]] PLEAS3!"
+        "liketodo": "YOUR [[choices]]"
     }
 }
