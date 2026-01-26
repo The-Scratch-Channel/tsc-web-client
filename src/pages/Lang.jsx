@@ -22,6 +22,10 @@ import hb from "../i18n/hb.json";
 import enFlag from "../assets/flags/en.svg";
 import esFlag from "../assets/flags/es.svg";
 import eoFlag from "../assets/flags/eo.svg";
+import rbeFlag from "../assets/flags/rbe.svg";
+import lolFlag from "../assets/flags/lol.svg";
+import hbFlag from "../assets/flags/hb.svg";
+
 
 function countKeys(obj) {
 	let count = 0;
