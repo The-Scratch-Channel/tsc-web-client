@@ -8,36 +8,36 @@ export default function Snow() {
 	const [showSnow, setShowSnow] = useState(false);
 
 	useEffect(() => {
-		const cookies = document.cookie.split(';').reduce((acc, cookie) => {
-			const [key, value] = cookie.trim().split('=');
+		const cookies = document.cookie.split(";").reduce((acc, cookie) => {
+			const [key, value] = cookie.trim().split("=");
 			acc[key] = value;
 			return acc;
 		}, {});
 
 		const urlParams = new URLSearchParams(window.location.search);
-		const snowParam = urlParams.get('snow');
-		const toggleSnowParam = urlParams.get('toggle_snow');
+		const snowParam = urlParams.get("snow");
+		const toggleSnowParam = urlParams.get("toggle_snow");
 		let paramHandled = false;
 		let newSnowValue = cookies.snow;
 
-		if (snowParam === '1' || snowParam === '0') {
+		if (snowParam === "1" || snowParam === "0") {
 			newSnowValue = snowParam;
 			document.cookie = `snow=${newSnowValue}; path=/; max-age=31536000`;
 			paramHandled = true;
 		} else if (toggleSnowParam !== null) {
-			newSnowValue = cookies.snow === '1' ? '0' : '1';
+			newSnowValue = cookies.snow === "1" ? "0" : "1";
 			document.cookie = `snow=${newSnowValue}; path=/; max-age=31536000`;
 			paramHandled = true;
 		}
 
 		if (paramHandled) {
 			const newUrl = new URL(window.location);
-			newUrl.searchParams.delete('snow');
-			newUrl.searchParams.delete('toggle_snow');
-			window.history.replaceState({}, '', newUrl);
+			newUrl.searchParams.delete("snow");
+			newUrl.searchParams.delete("toggle_snow");
+			window.history.replaceState({}, "", newUrl);
 		}
 
-		setShowSnow(newSnowValue === '1');
+		setShowSnow(newSnowValue === "1");
 
 		const updateHeight = () =>
 			setDocHeight(document.documentElement.scrollHeight);
