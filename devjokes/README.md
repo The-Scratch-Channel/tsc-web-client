@@ -12,3 +12,4 @@ Please do not include any of the following:
 4. Sexual Harassment/Sexual topic (we don't need MA GIRL.md again...)\
 5. No personal information (like full name, address, or school. First and last INITIAL is allowed. Like so: <code>Graison P.</code>)
 6. NSFW
+7. # NO 67
