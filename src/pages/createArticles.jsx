@@ -30,7 +30,7 @@ export default function CreateArticle({ user, profile }) {
 
 	const [title, setTitle] = useState("");
 	const [date] = useState(new Date().toISOString().split("T")[0]);
-	const categories = ["TSC Announcements", "TSC Update Log", "Scratch News"];
+	const categories = ["TSC Announcements", "TSC Update Log", "Scratch News", "DevJokes"];
 	const [category, setCategory] = useState(
 		categories.includes(routeCategory) ? routeCategory : categories[0]
 	);
