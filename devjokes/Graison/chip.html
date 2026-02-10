@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>chip</title>
+  <style>
+    :root {
+      --iframe-w: 485px;
+      --iframe-h: 402px;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #e6eef8;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    .stage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
+    .iframe-wrap {
+      position: absolute;
+      width: var(--iframe-w);
+      height: var(--iframe-h);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: left 1000ms ease, top 1000ms ease, transform 1000ms ease;
+      will-change: left, top, transform;
+      pointer-events: auto;
+      box-shadow: 0 18px 40px rgba(2,6,23,0.55), 0 6px 20px rgba(2,6,23,0.35);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .iframe-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    @keyframes fullspin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <div class="iframe-wrap" id="iframeWrap" role="group" aria-label="Scratch project embed">
+      <iframe src="https://scratch.mit.edu/projects/805327257/embed"
+              allowtransparency="true"
+              width="485" height="402" frameborder="0" scrolling="no" allowfullscreen
+              title="Scratch Project"></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const wrap = document.getElementById('iframeWrap');
+      const stage = document.getElementById('stage');
+      const W = 485, H = 402;
+      let moverInterval = null;
+      let started = false;
+
+      function centerWrap() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const left = Math.round((vw - W) / 2);
+        const top = Math.round((vh - H) / 2);
+        wrap.style.left = left + 'px';
+        wrap.style.top = top + 'px';
+        wrap.style.transform = 'rotate(0deg) scale(1)';
+      }
+
+      function randInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function startRandomMotion() {
+        if (started) return;
+        started = true;
+        wrap.style.transition = 'left 900ms cubic-bezier(.2,.8,.2,1), top 900ms cubic-bezier(.2,.8,.2,1), transform 900ms ease';
+        randomStep();
+        moverInterval = setInterval(() => {
+          randomStep();
+        }, 1500);
+        setInterval(() => {
+          if (Math.random() < 0.45) {
+            doFullSpin();
+          }
+        }, 10000 + Math.random() * 10000);
+      }
+
+      function randomStep() {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const maxLeft = Math.max(0, vw - W);
+        const maxTop  = Math.max(0, vh - H);
+        const newLeft = randInt(0, maxLeft);
+        const newTop  = randInt(0, maxTop);
+        const angle = randInt(-720, 720);
+        const scale = (Math.random() * 0.4) + 0.8;
+        if (Math.random() < 0.12) {
+          wrap.style.transform = `rotate(${angle}deg) scale(${scale * 1.12})`;
+          wrap.style.left = newLeft + 'px';
+          wrap.style.top  = newTop + 'px';
+          setTimeout(() => {
+            wrap.style.transform = `rotate(${angle}deg) scale(${scale})`;
+          }, 350);
+        } else {
+          wrap.style.left = newLeft + 'px';
+          wrap.style.top  = newTop + 'px';
+          wrap.style.transform = `rotate(${angle}deg) scale(${scale})`;
+        }
+      }
+
+      function doFullSpin() {
+        const spinKeyframes = [
+          { transform: wrap.style.transform || 'rotate(0deg) scale(1)' },
+          { transform: (wrap.style.transform || 'rotate(0deg) scale(1)') + ' rotate(360deg)' }
+        ];
+        try {
+          wrap.animate(spinKeyframes, {
+            duration: 800 + Math.random() * 900,
+            easing: 'cubic-bezier(.2,.8,.2,1)'
+          });
+        } catch (e) {
+          const match = (wrap.style.transform || '').match(/rotate\((-?\d+\.?\d*)deg\)/);
+          let current = match ? parseFloat(match[1]) : 0;
+          current += 360;
+          wrap.style.transform = (wrap.style.transform || '') + ` rotate(${current}deg)`;
+        }
+      }
+
+      window.addEventListener('load', () => {
+        centerWrap();
+        let resizeDebounce;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeDebounce);
+          resizeDebounce = setTimeout(() => {
+            if (!started) centerWrap();
+          }, 120);
+        });
+        const delayMs = 60000;
+        setTimeout(() => {
+          startRandomMotion();
+        }, delayMs);
+      });
+
+      window.addEventListener('beforeunload', () => {
+        if (moverInterval) clearInterval(moverInterval);
+      });
+    })();
+  </script>
+</body>
+</html>
