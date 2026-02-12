@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import MainContent from "./pages/MainContent";
@@ -18,9 +18,7 @@ import ChristmasPlayer from "./pages/ChristmasPlayer";
 import SantaTracker from "./pages/Santa";
 import NotFound from "./pages/404";
 
-import { auth, db } from "./firebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { useAuth } from "./hooks/useAuth";
 
 import "./styles/main.css";
 import "./styles/about.css";
@@ -44,29 +42,7 @@ import "./styles/account.css";
  * @returns {JSX.Element} The application UI including header, routes (with writer-protected routes), and footer.
  */
 function App() {
-	const [user, setUser] = useState(null);
-	const [profile, setProfile] = useState(null);
-	const [loading, setLoading] = useState(true);
-
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-			if (firebaseUser) {
-				setUser(firebaseUser);
-				const userDoc = await getDoc(
-					doc(db, "users", firebaseUser.uid)
-				);
-				if (userDoc.exists()) {
-					setProfile(userDoc.data());
-				}
-			} else {
-				setUser(null);
-				setProfile(null);
-			}
-			setLoading(false);
-		});
-
-		return () => unsubscribe();
-	}, []);
+	const { user, profile, loading } = useAuth();
 
 	if (loading) {
 		return (

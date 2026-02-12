@@ -3,6 +3,7 @@ import { auth } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import FormInput from "../components/FormInput";
 
 /**
  * Render a login page that authenticates users with email and password.
@@ -42,24 +43,18 @@ export default function LoginPage() {
 			<center>
 				<h1>{t("login.signin")}</h1>
 				<form onSubmit={handleSignIn}>
-					<div className="form-group">
-						<input
-							type="email"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							placeholder="Email"
-							className="form-input"
-						/>
-					</div>
-					<div className="form-group">
-						<input
-							type="password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							placeholder="Password"
-							className="form-input"
-						/>
-					</div>
+					<FormInput
+						type="email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						placeholder="Email"
+					/>
+					<FormInput
+						type="password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						placeholder="Password"
+					/>
 					<button className="submit-button" type="submit">
 						{t("login.signin")}
 					</button>

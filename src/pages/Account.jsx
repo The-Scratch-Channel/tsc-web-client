@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebaseConfig";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { useTranslation } from "react-i18next";
+import { useAuthUser } from "../hooks/useAuth";
 
 export default function Account() {
-	const [user, setUser] = useState(null);
+	const { user } = useAuthUser();
 	const [t, i18n] = useTranslation();
-
-	useEffect(() => {
-		const removeCookie = onAuthStateChanged(auth, (currentUser) => {
-			setUser(currentUser);
-		});
-
-		return () => removeCookie();
-	}, []);
 
 	const handleLogout = async () => {
 		try {
