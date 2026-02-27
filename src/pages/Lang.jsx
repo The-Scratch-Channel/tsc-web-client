@@ -22,10 +22,7 @@ import hb from "../i18n/hb.json";
 import enFlag from "../assets/flags/en.svg";
 import esFlag from "../assets/flags/es.svg";
 import eoFlag from "../assets/flags/eo.svg";
-import bgFlag from "../assets/flags/bg.svg";
-import rbeFlag from "../assets/flags/rbe.svg";
-import lolFlag from "../assets/flags/lol.svg";
-import hbFlag from "../assets/flags/hb.svg";
+import bgFlag from "../assets/flags/bg.svg"
 
 function countKeys(obj) {
 	let count = 0;
@@ -119,35 +116,6 @@ export default function LangPage() {
 				>
 					<img className="lang-flag" src={bgFlag} alt="Bulgarian" />
 					<button>Bulgarian</button>
-				</div>
-				<div
-					className="lang-btn-div"
-					onClick={() => switchLanguage("rbe")}
-				>
-					<img
-						className="lang-flag"
-						src={rbeFlag}
-						alt="Rock Bottom-ese"
-					/>
-					<button>Rock Bottomese</button>
-				</div>
-				<div
-					className="lang-btn-div"
-					onClick={() => switchLanguage("lol")}
-				>
-					<img className="lang-flag" src={lolFlag} alt="LOLCAT" />
-					<button>LOLCAT</button>
-				</div>
-				<div
-					className="lang-btn-div"
-					onClick={() => switchLanguage("hb")}
-				>
-					<img
-						className="lang-flag"
-						src={hbFlag}
-						alt="[[BIG SHOT]]"
-					/>
-					<button>[[Hyperlink Blocked]]</button>
 				</div>
 			</div>
 			<h2>{t("misc.langprogress")}</h2>
