@@ -20,12 +20,12 @@ jobs:
     - name: Install dependencies
       id: install
       run: |
-        echo "install_status=success" >> $GITHUB_OUTPUT
-        install_output=$(npm ci 2>&1) || {
-          echo "install_status=failure" >> $GITHUB_OUTPUT
-          echo "error_output<<EOF" >> $GITHUB_OUTPUT
-          echo "$install_output" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+        install_output=$(npm ci 2>&1) || install_output=$(npm i 2>&1) || {
+          echo "install_status=failure" >> "$GITHUB_OUTPUT"
+          echo "error_output<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$install_output" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          exit 0
         }
         
     - name: Run build
