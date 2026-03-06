@@ -4,7 +4,7 @@ If you find a security vulnerability in our code, do not make an issue for it. I
 
 ## Creating a vunerability
 Creating a report is easy, just click the new button and follow the instructions and fill out the required fields.
->![IMPORTANT]
+>[!IMPORTANT]
 >PLEASE have GitHub assign a CVE ID to your report. This make it easy to tell other the issue is fixed, once it is.
 
 ## TTLLVBTA (Things that look like vulnerabilities but aren't)
