@@ -66,5 +66,11 @@
         "signup": "Sign up",
         "liketodo": "What would you like to do?", 
 		"emaillabel": "Email" 
+    },
+    "forgotPassword": {
+        "title": "Forgot Password?",
+		"emailPlaceholder": "Email", 
+        "submit": "Submit", 
+		"success": "Successfully sent reset email. Check your spam."
     }
 }

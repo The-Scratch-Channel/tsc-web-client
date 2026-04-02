@@ -63,6 +63,7 @@ export default function LoginPage() {
 					<button className="submit-button" type="submit">
 						{t("login.signin")}
 					</button>
+					<a href="/forgotpassword">{t("forgotPassword.title")}</a>
 				</form>
 			</center>
 		</>

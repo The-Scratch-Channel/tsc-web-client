@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebaseConfig'; // Adjust import based on your Firebase configuration
 import { useTranslation } from 'react-i18next';
-import './ForgotPassword.css'; // Assuming you have a CSS file for styling
+import '../styles/ForgotPassword.css'; // Assuming you have a CSS file for styling
 
 const ForgotPassword = () => {
     const { t } = useTranslation();
@@ -19,7 +19,7 @@ const ForgotPassword = () => {
         setError('');
         try {
             await sendPasswordResetEmail(auth, email);
-            setMessage(t('success.resetEmailSent'));
+            setMessage(t('forgotPassword.success'));
         } catch (error) {
             setError(t('error.sendFailed'));
         }

@@ -18,6 +18,7 @@ import Snow from "./components/Snow";
 import ChristmasPlayer from "./pages/ChristmasPlayer";
 import SantaTracker from "./pages/Santa";
 import NotFound from "./pages/404";
+import ForgotPassword from "./pages/ForgotPassword";
 
 
 import { auth, db } from "./firebaseConfig";
@@ -150,6 +151,7 @@ function App() {
 				<Route path="/lang" element={<LangPage />} />
 				<Route path="/tracksanta" element={<SantaTracker />} />
 				<Route path="/404" element={<NotFound />} />
+				<Route path="/forgotpassword" element={<ForgotPassword />} />
 			</Routes>
 			<Footer />
 			<AIAssistant />
