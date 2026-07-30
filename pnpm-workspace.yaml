@@ -3,3 +3,6 @@ onlyBuiltDependencies:
   - es5-ext
   - esbuild
   - protobufjs
+
+overrides:
+  '@protobufjs/utf8': 1.1.1
