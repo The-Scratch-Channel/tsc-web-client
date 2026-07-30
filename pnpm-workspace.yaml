@@ -1,3 +1,7 @@
+overrides:
+  protobufjs: 7.6.5
+  '@grpc/grpc-js': 1.9.16
+
 onlyBuiltDependencies:
   - '@firebase/util'
   - es5-ext
@@ -6,3 +10,4 @@ onlyBuiltDependencies:
 
 overrides:
   websocket-driver: 0.7.5
+  '@protobufjs/utf8': 1.1.1
