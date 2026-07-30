@@ -1,8 +1,12 @@
 overrides:
   protobufjs: 7.6.5
+  '@grpc/grpc-js': 1.9.16
 
 onlyBuiltDependencies:
   - '@firebase/util'
   - es5-ext
   - esbuild
   - protobufjs
+
+overrides:
+  '@protobufjs/utf8': 1.1.1
