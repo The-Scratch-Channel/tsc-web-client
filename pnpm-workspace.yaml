@@ -1,8 +1,8 @@
-overrides:
-  '@grpc/grpc-js': 1.9.16
-
 onlyBuiltDependencies:
   - '@firebase/util'
   - es5-ext
   - esbuild
   - protobufjs
+
+overrides:
+  sanitize-html>postcss: 8.5.18
