@@ -1,4 +1,5 @@
 overrides:
+  protobufjs: 7.6.5
   '@grpc/grpc-js': 1.9.16
 
 onlyBuiltDependencies:
