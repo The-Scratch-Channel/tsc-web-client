@@ -9,4 +9,5 @@ onlyBuiltDependencies:
   - protobufjs
 
 overrides:
+  websocket-driver: 0.7.5
   '@protobufjs/utf8': 1.1.1
