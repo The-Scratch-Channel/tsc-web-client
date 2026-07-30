@@ -37,9 +37,9 @@
 }
 
 .nav-content img {
-	height: 35px;
+	height: 45px;
 	cursor: pointer;
-	transition: transform 0.2s ease-in-out;
+	transition: transform 0.2s ease-in-out; /* set height back to 35px after xmas */
 }
 
 .nav-content img:hover {

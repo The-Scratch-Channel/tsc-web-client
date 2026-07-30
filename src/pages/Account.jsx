@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -7,13 +7,12 @@ import { useTranslation } from "react-i18next";
 export default function Account() {
 	const [user, setUser] = useState(null);
 	const [t, i18n] = useTranslation();
+
 	useEffect(() => {
-		// listen for auth state changes any change causes this
 		const removeCookie = onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
 		});
 
-		// sign out and remove local data from browsers
 		return () => removeCookie();
 	}, []);
 
@@ -51,4 +50,4 @@ export default function Account() {
 			)}
 		</div>
 	);
-} 
+}

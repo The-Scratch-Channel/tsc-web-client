@@ -19,6 +19,13 @@ Third, install dependencies
 npm install
 ```
 
+Optionally: Use `pnpm` because its faster
+
+```bash
+npm install -g pnpm
+pnpm install
+```
+
 This could take a bit.
 
 Finally, you can now edit the code. Commit your changes then make a PR. The dev team will look into it and decide whether to merge it or not.

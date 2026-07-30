@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { auth } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -63,6 +63,7 @@ export default function LoginPage() {
 					<button className="submit-button" type="submit">
 						{t("login.signin")}
 					</button>
+					<a href="/forgotpassword">{t("forgotPassword.title")}</a>
 				</form>
 			</center>
 		</>

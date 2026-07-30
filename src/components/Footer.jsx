@@ -48,7 +48,7 @@ export default function Footer() {
 				</div>
 			</div>
 			<br />
-			<h4 className="footer-copyright-info">
+			<h4 className="footer-copyright-info" id="footer">
 				© {new Date().getFullYear()} The Scratch Channel
 			</h4>
 		</footer>

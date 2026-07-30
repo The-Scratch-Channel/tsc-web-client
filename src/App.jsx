@@ -1,3 +1,4 @@
+import logo from "./assets/logo.png";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -12,6 +13,13 @@ import SignUpForm from "./pages/SignUp";
 import MakeAdmin from "./pages/MakeAdmin";
 import UserList from "./pages/UserList";
 import LangPage from "./pages/Lang";
+import AIAssistant from "./components/AIAssistant";
+import Snow from "./components/Snow";
+import ChristmasPlayer from "./pages/ChristmasPlayer";
+import SantaTracker from "./pages/Santa";
+import NotFound from "./pages/404";
+import ForgotPassword from "./pages/ForgotPassword";
+
 
 import { auth, db } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
@@ -29,6 +37,7 @@ import "./styles/editor.css";
 import "./styles/lang.css";
 import "./styles/login.css";
 import "./styles/UserList.css";
+import "./styles/account.css";
 
 /**
  * Root React component that initializes authentication/profile state and renders the app routes.
@@ -72,6 +81,7 @@ function App() {
 					height: "100vh",
 				}}
 			>
+				<img src={logo} />
 				<div
 					style={{
 						border: "6px solid #4E97FE",
@@ -96,6 +106,7 @@ function App() {
 
 	return (
 		<Router>
+			<Snow />
 			<Header />
 			<Routes>
 				<Route path="/" element={<MainContent />} />
@@ -138,8 +149,13 @@ function App() {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/signup" element={<SignUpForm />} />
 				<Route path="/lang" element={<LangPage />} />
+				<Route path="/tracksanta" element={<SantaTracker />} />
+				<Route path="/404" element={<NotFound />} />
+				<Route path="/forgotpassword" element={<ForgotPassword />} />
 			</Routes>
 			<Footer />
+			<AIAssistant />
+			<ChristmasPlayer />
 		</Router>
 	);
 }

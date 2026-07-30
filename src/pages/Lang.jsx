@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import {
 	BarChart,
@@ -23,6 +22,7 @@ import hb from "../i18n/hb.json";
 import enFlag from "../assets/flags/en.svg";
 import esFlag from "../assets/flags/es.svg";
 import eoFlag from "../assets/flags/eo.svg";
+import bgFlag from "../assets/flags/bg.svg"
 
 function countKeys(obj) {
 	let count = 0;
@@ -110,7 +110,13 @@ export default function LangPage() {
 					<img className="lang-flag" src={eoFlag} alt="Esperanto" />
 					<button>Esperanto</button>
 				</div>
-				{/* the other languages are not available to use, because they are either parody languages or unmaintainable ones. before bringing one back, one must consult the dev team in an issue. */}
+				<div
+					className="lang-btn-div"
+					onClick={() => switchLanguage("bg")}
+				>
+					<img className="lang-flag" src={bgFlag} alt="Bulgarian" />
+					<button>Bulgarian</button>
+				</div>
 			</div>
 			<h2>{t("misc.langprogress")}</h2>
 			<ResponsiveContainer width="100%" height={300}>

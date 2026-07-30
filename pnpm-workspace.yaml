@@ -1,0 +1,5 @@
+onlyBuiltDependencies:
+  - '@firebase/util'
+  - es5-ext
+  - esbuild
+  - protobufjs
